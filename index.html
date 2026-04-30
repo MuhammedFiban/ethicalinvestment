@@ -13,9 +13,10 @@
   --bg-card: #FFFFFF;
   --text-primary: #1D1D1F;
   --text-secondary: #6E6E73;
-  --accent-coffee: #3C2A21;
-  --accent-light: #6B4C3B;
-  --accent-gradient: linear-gradient(135deg, #3C2A21 0%, #6B4C3B 100%);
+  /* Light warm brown accent */
+  --accent: #BEB7A4;
+  --accent-dark: #8B7B6B;        /* darker for text on light bg */
+  --accent-gradient: linear-gradient(135deg, #D4C9B0 0%, #BEB7A4 100%);
   --border: rgba(0,0,0,0.06);
   --border-strong: rgba(0,0,0,0.1);
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
@@ -36,14 +37,10 @@ body{
   overscroll-behavior:none;touch-action:pan-y pinch-zoom;
 }
 html, body{width:100%;max-width:100vw;overflow-x:hidden;}
-
 img,svg{max-width:100%;display:block}
 a{text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}
 button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
 ul{list-style:none}
-
-::-webkit-scrollbar{width:6px;background:transparent}
-::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.12);border-radius:3px}
 
 /* NAV */
 .nav{
@@ -58,8 +55,8 @@ ul{list-style:none}
 .nav-links{display:flex;gap:28px;}
 .nav-links a{font-size:12px;font-weight:500;color:var(--text-secondary);letter-spacing:-0.01em;transition:color 0.2s;}
 .nav-links a:hover{color:var(--text-primary)}
-.nav-cta{background:var(--accent-coffee);color:#FFF;padding:8px 18px;border-radius:var(--radius-pill);font-size:12px;font-weight:600;transition:all var(--transition-fast);}
-.nav-cta:hover{background:var(--accent-light);transform:scale(1.04)}
+.nav-cta{background:var(--accent-dark);color:#FFF;padding:8px 18px;border-radius:var(--radius-pill);font-size:12px;font-weight:600;transition:all var(--transition-fast);}
+.nav-cta:hover{background:var(--accent);color:#1D1D1F;transform:scale(1.04)}
 .hamburger{display:none;background:none;border:none;padding:8px;cursor:pointer;}
 .hamburger span{display:block;width:18px;height:1.5px;background:var(--text-primary);margin:4px 0;transition:0.3s;border-radius:1px;}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
@@ -92,66 +89,59 @@ ul{list-style:none}
 
 /* BUTTONS */
 .btn{display:inline-flex;align-items:center;gap:6px;padding:12px 24px;border-radius:var(--radius-pill);font-size:13px;font-weight:600;letter-spacing:-0.01em;border:none;cursor:pointer;transition:all var(--transition-fast);text-transform:uppercase;}
-.btn-primary{background:var(--accent-coffee);color:#FFF;}
-.btn-primary:hover{background:var(--accent-light);transform:scale(1.03)}
-.btn-outline{background:transparent;color:var(--accent-coffee);border:1px solid var(--accent-coffee);}
-.btn-outline:hover{background:rgba(60,42,33,0.04);transform:scale(1.03)}
+.btn-primary{background:var(--accent-dark);color:#FFF;}
+.btn-primary:hover{background:var(--accent);color:#1D1D1F;transform:scale(1.03)}
+.btn-outline{background:transparent;color:var(--accent-dark);border:1px solid var(--accent-dark);}
+.btn-outline:hover{background:rgba(190,183,164,0.1);transform:scale(1.03)}
 
 /* CARDS */
 .card{background:var(--bg-card);border-radius:var(--radius-md);padding:24px;border:1px solid var(--border);transition:all var(--transition-fast);}
 .card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
 .card-title{font-size:18px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;text-transform:uppercase;}
-.card-subtitle{font-size:13px;color:var(--text-secondary);}
-.percentage-bar{height:8px;background:#F5F5F7;border-radius:4px;margin:8px 0 12px;overflow:hidden;}
-.percentage-fill{height:100%;border-radius:4px;background:var(--accent-gradient);}
+
+/* VERSE */
+.verse-box{
+  background:rgba(190,183,164,0.1);border-left:4px solid var(--accent-dark);border-radius:8px;
+  padding:24px;max-width:680px;margin:40px auto 0;text-align:center;
+}
+.verse-text{font-size:16px;font-weight:400;color:var(--accent-dark);line-height:1.7;font-style:italic;}
+.verse-source{font-size:12px;font-weight:600;color:var(--text-secondary);margin-top:8px;text-transform:uppercase;}
 
 /* SCREENER RESULT */
+.percentage-bar{height:8px;background:#F5F5F7;border-radius:4px;margin:8px 0 12px;overflow:hidden;}
+.percentage-fill{height:100%;border-radius:4px;background:var(--accent-gradient);}
 .compliance-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
 .summary-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-primary);}
 .summary-item.checked::before{content:'✓';color:#2E7D32;font-weight:700;}
 
-/* WATCHLIST */
-.watchlist-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
-.watchlist-item:last-child{border-bottom:none}
-.watchlist-icon{width:40px;height:40px;border-radius:10px;background:rgba(60,42,33,0.06);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--accent-coffee);}
-.watchlist-name{flex:1;font-weight:600;font-size:14px;}
-.watchlist-percent{font-weight:700;font-size:14px;color:var(--accent-coffee);}
-
-/* VERSE */
-.verse-box{
-  background:rgba(60,42,33,0.04);border-left:4px solid var(--accent-coffee);border-radius:8px;
-  padding:24px;max-width:680px;margin:40px auto 0;text-align:center;
+/* CALCULATOR INPUTS */
+.calc-input{
+  width:100%;padding:10px 14px;border:1px solid var(--border-strong);border-radius:8px;
+  font-size:14px;font-family:Inter;margin-bottom:10px;outline:none;
 }
-.verse-text{font-size:16px;font-weight:400;color:var(--accent-coffee);line-height:1.7;font-style:italic;}
-.verse-source{font-size:12px;font-weight:600;color:var(--text-secondary);margin-top:8px;text-transform:uppercase;}
+.calc-input:focus{border-color:var(--accent-dark);}
+.calc-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);}
+.calc-row:last-child{border-bottom:none}
+.calc-label{font-size:13px;color:var(--text-secondary);}
+.calc-value{font-size:16px;font-weight:700;color:var(--text-primary);}
 
-/* TABLE (collapsible watchlist) */
-.table-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border);margin-top:20px;}
-.data-table{width:100%;border-collapse:collapse;font-size:13px;min-width:600px;}
-.data-table thead th{background:var(--bg-body);padding:12px 16px;font-size:10px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.1em;text-align:left;position:sticky;top:0;}
-.data-table tbody td{padding:12px 16px;border-bottom:1px solid var(--border);font-weight:500;}
-.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:var(--radius-pill);font-size:10px;font-weight:700;}
-.badge-halal{background:rgba(46,125,50,0.08);color:#2E7D32;}
-.badge-caution{background:rgba(230,81,0,0.08);color:#E65100;}
-.badge-haram{background:rgba(198,40,40,0.08);color:#C62828;}
-
-/* CALCULATOR (growth) */
+/* GROWTH CALCULATOR (sliders) */
 .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
 @media(max-width:768px){.calc-grid{grid-template-columns:1fr}}
 .calc-form{background:var(--bg-card);border-radius:var(--radius-lg);padding:28px;border:1px solid var(--border)}
-.calc-result{background:var(--accent-coffee);border-radius:var(--radius-lg);padding:28px;color:#FFF}
+.calc-result{background:var(--accent-dark);border-radius:var(--radius-lg);padding:28px;color:#FFF}
 .calc-group{margin-bottom:20px}
-.calc-label{font-size:10px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;display:block}
-.calc-value{font-size:32px;font-weight:800;color:var(--text-primary);letter-spacing:-0.04em;display:block;margin-bottom:6px}
-input[type=range]{width:100%;height:4px;accent-color:var(--accent-coffee);-webkit-appearance:none;background:var(--accent-coffee);border-radius:2px;}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent-coffee);border:2px solid #FFFFFF;box-shadow:0 2px 6px rgba(0,0,0,0.15);cursor:pointer;}
-input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--accent-coffee);border:2px solid #FFFFFF;box-shadow:0 2px 6px rgba(0,0,0,0.15);cursor:pointer;}
-.calc-row{display:flex;justify-content:space-between;align-items:flex-end;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1)}
-.calc-row:last-child{border-bottom:none}
-.calc-row-label{font-size:12px;font-weight:500;color:rgba(255,255,255,0.6)}
-.calc-row-value{font-size:18px;font-weight:700;color:#FFF;letter-spacing:-0.02em}
-.calc-row-value.lg{font-size:26px}
-.calc-row-value.accent{color:#D4C9B0}
+.calc-label-sm{font-size:10px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;display:block}
+.calc-value-lg{font-size:32px;font-weight:800;color:var(--text-primary);letter-spacing:-0.04em;display:block;margin-bottom:6px}
+input[type=range]{width:100%;height:4px;accent-color:var(--accent-dark);-webkit-appearance:none;background:var(--accent);border-radius:2px;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent-dark);border:2px solid #FFFFFF;box-shadow:0 2px 6px rgba(0,0,0,0.15);cursor:pointer;}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--accent-dark);border:2px solid #FFFFFF;box-shadow:0 2px 6px rgba(0,0,0,0.15);cursor:pointer;}
+.calc-row-dark{display:flex;justify-content:space-between;align-items:flex-end;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1)}
+.calc-row-dark:last-child{border-bottom:none}
+.calc-row-label-dark{font-size:12px;font-weight:500;color:rgba(255,255,255,0.6)}
+.calc-row-value-dark{font-size:18px;font-weight:700;color:#FFF;letter-spacing:-0.02em}
+.calc-row-value-dark.lg{font-size:26px}
+.calc-row-value-dark.accent{color:#D4C9B0}
 
 /* FLASHCARDS */
 .flashcard-wrap{max-width:480px;margin:0 auto;text-align:center}
@@ -160,55 +150,45 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .flashcard.flipped .flashcard-inner{transform:rotateY(180deg)}
 .flashcard-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center}
 .flashcard-front{background:var(--bg-card);border:1px solid var(--border)}
-.flashcard-front .f-tag{font-size:10px;font-weight:700;color:var(--accent-coffee);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:12px}
+.flashcard-front .f-tag{font-size:10px;font-weight:700;color:var(--accent-dark);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:12px}
 .flashcard-front .f-q{font-size:22px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em;line-height:1.3}
-.flashcard-back{background:var(--accent-coffee);transform:rotateY(180deg);color:#FFF}
+.flashcard-back{background:var(--accent-dark);transform:rotateY(180deg);color:#FFF}
 .flashcard-back .f-a{font-size:14px;font-weight:400;line-height:1.6}
 .flashcard-nav{display:flex;gap:8px;justify-content:center;margin-top:8px}
-.flashcard-nav button{background:var(--bg-card);color:var(--accent-coffee);padding:8px 20px;border-radius:var(--radius-pill);font-size:12px;font-weight:600;border:1px solid var(--border);cursor:pointer;transition:all var(--transition-fast)}
-.flashcard-nav button:hover{background:var(--accent-coffee);color:#FFF;border-color:var(--accent-coffee)}
+.flashcard-nav button{background:var(--bg-card);color:var(--accent-dark);padding:8px 20px;border-radius:var(--radius-pill);font-size:12px;font-weight:600;border:1px solid var(--border);cursor:pointer;transition:all var(--transition-fast)}
+.flashcard-nav button:hover{background:var(--accent-dark);color:#FFF;border-color:var(--accent-dark)}
 .flashcard-dots{display:flex;gap:5px;justify-content:center;margin-top:10px}
 .f-dot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:all 0.3s}
-.f-dot.active{background:var(--accent-coffee);width:18px;border-radius:3px}
+.f-dot.active{background:var(--accent-dark);width:18px;border-radius:3px}
 
-/* WIZARD */
-.wizard-wrap{max-width:560px;margin:0 auto}
-.wizard-card{background:var(--bg-card);border-radius:24px;padding:32px;text-align:center;border:1px solid var(--border);}
-.wizard-step{display:none}
-.wizard-step.active{display:block}
-.wizard-input{width:100%;padding:12px 16px;border:1px solid var(--border-strong);border-radius:10px;font-size:15px;font-family:Inter;margin-top:12px;outline:none}
-.wizard-input:focus{border-color:var(--accent-coffee)}
-.wizard-feedback{font-size:13px;margin-top:8px;font-weight:600;min-height:20px}
-.wizard-feedback.pass{color:#2E7D32}
-.wizard-feedback.fail{color:#C62828}
-.wizard-result{display:none;margin-top:16px;padding:16px;border-radius:12px}
-.wizard-result.halal{background:rgba(46,125,50,0.04);border:1px solid rgba(46,125,50,0.15)}
-.wizard-result.haram{background:rgba(198,40,40,0.04);border:1px solid rgba(198,40,40,0.15)}
-.wizard-result.caution{background:rgba(230,81,0,0.04);border:1px solid rgba(230,81,0,0.15)}
+/* QUICK TIPS (new) */
+.tip-card{background:rgba(190,183,164,0.05);border-radius:var(--radius-md);padding:24px;text-align:center;border:1px solid var(--border);}
+.tip-text{font-size:15px;font-weight:500;color:var(--text-primary);line-height:1.6;font-style:italic;}
+.tip-author{font-size:12px;color:var(--text-secondary);margin-top:8px;}
 
 /* CHATBOT */
-.chatbot-toggle{position:fixed;bottom:20px;right:20px;z-index:10001;width:48px;height:48px;border-radius:50%;background:var(--accent-coffee);color:#FFF;border:none;font-size:20px;box-shadow:0 4px 20px rgba(0,0,0,0.1);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:0.3s}
-.chatbot-toggle:hover{background:var(--accent-light);transform:scale(1.05)}
+.chatbot-toggle{position:fixed;bottom:20px;right:20px;z-index:10001;width:48px;height:48px;border-radius:50%;background:var(--accent-dark);color:#FFF;border:none;font-size:20px;box-shadow:0 4px 20px rgba(0,0,0,0.1);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:0.3s}
+.chatbot-toggle:hover{background:var(--accent);color:#1D1D1F;transform:scale(1.05)}
 .chatbot-window{display:none;position:fixed;bottom:80px;right:20px;z-index:10002;width:320px;max-width:90vw;height:420px;max-height:60vh;background:var(--bg-card);border-radius:var(--radius-lg);box-shadow:0 10px 40px rgba(0,0,0,0.15);flex-direction:column;overflow:hidden;border:1px solid var(--border)}
 .chatbot-window.open{display:flex}
-.chatbot-header{background:var(--accent-coffee);color:#FFF;padding:12px 16px;font-weight:600;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.chatbot-header{background:var(--accent-dark);color:#FFF;padding:12px 16px;font-weight:600;display:flex;justify-content:space-between;align-items:center;font-size:13px}
 .chatbot-body{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
 .chatbot-msg{max-width:85%;padding:10px 12px;border-radius:14px;font-size:13px;line-height:1.5;word-wrap:break-word}
-.chatbot-msg.bot{background:rgba(60,42,33,0.06);align-self:flex-start}
-.chatbot-msg.user{background:var(--accent-coffee);color:#FFF;align-self:flex-end}
+.chatbot-msg.bot{background:rgba(190,183,164,0.15);align-self:flex-start}
+.chatbot-msg.user{background:var(--accent-dark);color:#FFF;align-self:flex-end}
 .chatbot-input-row{display:flex;border-top:1px solid var(--border);padding:8px}
 .chatbot-input-row input{flex:1;border:none;padding:10px;font-size:13px;outline:none;font-family:Inter;background:var(--bg-card)}
-.chatbot-input-row button{background:var(--accent-coffee);color:#FFF;border:none;padding:8px 14px;border-radius:var(--radius-pill);font-weight:600;cursor:pointer;font-size:12px}
+.chatbot-input-row button{background:var(--accent-dark);color:#FFF;border:none;padding:8px 14px;border-radius:var(--radius-pill);font-weight:600;cursor:pointer;font-size:12px}
 
 /* FOOTER */
-.footer{background:var(--accent-coffee);color:rgba(255,255,255,0.7);padding:48px 22px 28px;font-size:12px;}
+.footer{background:var(--accent-dark);color:rgba(255,255,255,0.7);padding:48px 22px 28px;font-size:12px;}
 .footer-inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.1);}
 .footer-bottom{max-width:980px;margin:16px auto 0;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.4);}
 @media(max-width:768px){.footer-inner{grid-template-columns:1fr;gap:24px}}
 
 /* MISC */
-.pill{background:rgba(60,42,33,0.05);padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;transition:0.2s;display:inline-block;margin:4px;}
-.pill:hover{background:rgba(60,42,33,0.1);}
+.pill{background:rgba(190,183,164,0.2);padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;transition:0.2s;display:inline-block;margin:4px;}
+.pill:hover{background:rgba(190,183,164,0.4);}
 </style>
 </head>
 <body>
@@ -220,7 +200,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   <a href="#calculator" onclick="closeMobile()">CALCULATORS</a>
   <a href="#watchlist" onclick="closeMobile()">WATCHLIST</a>
   <a href="#learn" onclick="closeMobile()">LEARN</a>
-  <a href="#community" onclick="closeMobile()">COMMUNITY</a>
+  <a href="#tips" onclick="closeMobile()">TIPS</a>
   <button class="nav-cta" onclick="closeMobile();document.getElementById('screener').scrollIntoView({behavior:'smooth'})">SCREEN A STOCK</button>
 </div>
 
@@ -228,7 +208,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 <nav class="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo">
-      <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#3C2A21" stroke-width="2.5"/><path d="M10 14l3 3 5-6" stroke="#3C2A21" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#8B7B6B" stroke-width="2.5"/><path d="M10 14l3 3 5-6" stroke="#8B7B6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>ENVESTMENT</span>
     </a>
     <ul class="nav-links">
@@ -259,7 +239,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   </div>
 </section>
 
-<!-- STOCK SCREENER (with result card) -->
+<!-- SCREENER -->
 <section class="section" id="screener">
   <div class="section-inner">
     <div style="text-align:center;margin-bottom:32px">
@@ -275,7 +255,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   </div>
 </section>
 
-<!-- FEATURES (Halal vs Haram + Investment Options) -->
+<!-- FEATURES -->
 <section class="section" id="features">
   <div class="section-inner">
     <div style="text-align:center;margin-bottom:32px">
@@ -298,7 +278,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   </div>
 </section>
 
-<!-- PLATFORMS (Groww/Zerodha) -->
+<!-- PLATFORMS -->
 <section class="section" style="background:#F5F5F7">
   <div class="section-inner">
     <h2 class="headline" style="font-size:clamp(28px,5vw,42px)">TRUSTED <span class="headline-accent">PLATFORMS.</span></h2>
@@ -319,48 +299,55 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   </div>
 </section>
 
-<!-- CALCULATORS (Purification & Zakat + Growth) -->
+<!-- CALCULATORS (fixed interactivity) -->
 <section class="section" id="calculator">
   <div class="section-inner">
     <h2 class="headline" style="font-size:clamp(28px,5vw,42px);margin-bottom:24px"><span class="headline-accent">CALCULATORS.</span></h2>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:800px;margin:0 auto 40px">
-      <!-- Purification -->
+      <!-- Purification Calculator -->
       <div class="card">
         <div class="card-header"><div class="card-title">PURIFICATION</div></div>
-        <div class="calc-row"><span class="calc-label">Total Purifiable</span><span class="calc-value" style="color:var(--text-primary);font-size:18px">₹2,345</span></div>
-        <div class="calc-row"><span class="calc-label">Interest Income</span><span>₹1,450</span></div>
-        <div class="calc-row"><span class="calc-label">Other</span><span>₹895</span></div>
-        <button class="btn btn-outline" style="margin-top:16px;width:100%">CALCULATE PURIFICATION</button>
+        <label class="calc-label">Interest Income (₹)</label>
+        <input type="number" id="purInterest" class="calc-input" value="1450" oninput="calcPurification()"/>
+        <label class="calc-label">Other Non‑Permissible (₹)</label>
+        <input type="number" id="purOther" class="calc-input" value="895" oninput="calcPurification()"/>
+        <div class="calc-row"><span class="calc-label">Total Purifiable</span><span class="calc-value" id="purTotal">₹2,345</span></div>
+        <button class="btn btn-outline" style="margin-top:16px;width:100%" onclick="calcPurification()">CALCULATE PURIFICATION</button>
       </div>
-      <!-- Zakat -->
+      <!-- Zakat Calculator -->
       <div class="card">
         <div class="card-header"><div class="card-title">ZAKAT</div></div>
-        <div class="calc-row"><span class="calc-label">Total Zakat Payable</span><span class="calc-value" style="color:var(--text-primary);font-size:18px">₹18,765</span></div>
-        <div class="calc-row"><span class="calc-label">Net Wealth</span><span>₹7,50,600</span></div>
-        <div class="calc-row"><span class="calc-label">Zakat Rate</span><span>2.5%</span></div>
-        <button class="btn btn-outline" style="margin-top:16px;width:100%">CALCULATE ZAKAT</button>
+        <label class="calc-label">Net Wealth (₹)</label>
+        <input type="number" id="zakatWealth" class="calc-input" value="750600" oninput="calcZakat()"/>
+        <label class="calc-label">Nisab Met? (85g gold ≈ ₹5,00,000)</label>
+        <select id="nisabMet" class="calc-input" onchange="calcZakat()">
+          <option value="yes" selected>Yes</option>
+          <option value="no">No</option>
+        </select>
+        <div class="calc-row"><span class="calc-label">Total Zakat Payable</span><span class="calc-value" id="zakatTotal">₹18,765</span></div>
+        <button class="btn btn-outline" style="margin-top:16px;width:100%" onclick="calcZakat()">CALCULATE ZAKAT</button>
       </div>
     </div>
     <!-- Growth Calculator -->
     <div class="calc-grid" style="max-width:800px;margin:0 auto">
       <div class="calc-form">
         <div class="card-title" style="margin-bottom:20px">GROWTH CALCULATOR</div>
-        <div class="calc-group"><label class="calc-label">MONTHLY INVESTMENT</label><span class="calc-value" id="invVal">₹5,000</span><input type="range" min="500" max="50000" step="500" value="5000" id="invRange" oninput="updateCalc()"/></div>
-        <div class="calc-group"><label class="calc-label">TIME HORIZON</label><span class="calc-value" id="yrsVal">10 YEARS</span><input type="range" min="1" max="30" step="1" value="10" id="yrsRange" oninput="updateCalc()"/></div>
-        <div class="calc-group"><label class="calc-label">EXPECTED RETURN</label><span class="calc-value" id="retVal">12.0%</span><input type="range" min="6" max="20" step="0.5" value="12" id="retRange" oninput="updateCalc()"/></div>
+        <div class="calc-group"><label class="calc-label-sm">MONTHLY INVESTMENT</label><span class="calc-value-lg" id="invVal">₹5,000</span><input type="range" min="500" max="50000" step="500" value="5000" id="invRange" oninput="updateGrowthCalc()"/></div>
+        <div class="calc-group"><label class="calc-label-sm">TIME HORIZON</label><span class="calc-value-lg" id="yrsVal">10 YEARS</span><input type="range" min="1" max="30" step="1" value="10" id="yrsRange" oninput="updateGrowthCalc()"/></div>
+        <div class="calc-group"><label class="calc-label-sm">EXPECTED RETURN</label><span class="calc-value-lg" id="retVal">12.0%</span><input type="range" min="6" max="20" step="0.5" value="12" id="retRange" oninput="updateGrowthCalc()"/></div>
       </div>
       <div class="calc-result">
-        <p class="calc-label" style="color:rgba(255,255,255,0.5)">PROJECTED WEALTH</p>
-        <div class="calc-row"><div class="calc-row-label">TOTAL INVESTED</div><div class="calc-row-value" id="rInv">₹6,00,000</div></div>
-        <div class="calc-row"><div class="calc-row-label">ESTIMATED RETURNS</div><div class="calc-row-value" id="rRet">₹5,61,695</div></div>
-        <div class="calc-row"><div class="calc-row-label">FUTURE VALUE</div><div class="calc-row-value lg" id="rFV">₹11,61,695</div></div>
-        <div class="calc-row"><div class="calc-row-label">NET HALAL WEALTH</div><div class="calc-row-value lg accent" id="rNet">₹11,32,653</div></div>
+        <p class="calc-label-sm" style="color:rgba(255,255,255,0.5)">PROJECTED WEALTH</p>
+        <div class="calc-row-dark"><div class="calc-row-label-dark">TOTAL INVESTED</div><div class="calc-row-value-dark" id="rInv">₹6,00,000</div></div>
+        <div class="calc-row-dark"><div class="calc-row-label-dark">ESTIMATED RETURNS</div><div class="calc-row-value-dark" id="rRet">₹5,61,695</div></div>
+        <div class="calc-row-dark"><div class="calc-row-label-dark">FUTURE VALUE</div><div class="calc-row-value-dark lg" id="rFV">₹11,61,695</div></div>
+        <div class="calc-row-dark"><div class="calc-row-label-dark">NET HALAL WEALTH</div><div class="calc-row-value-dark lg accent" id="rNet">₹11,32,653</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WATCHLIST (collapsible) -->
+<!-- WATCHLIST (full table only, no mini) -->
 <section class="section" id="watchlist">
   <div class="section-inner">
     <h2 class="headline" style="font-size:clamp(28px,5vw,42px);margin-bottom:24px">HALAL <span class="headline-accent">WATCHLIST.</span></h2>
@@ -370,28 +357,6 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     <div id="watchlistTableWrapper">
       <div class="table-wrap" id="fullWatchlistTable"></div>
       <p style="text-align:center;font-size:12px;color:var(--text-secondary);margin-top:8px">DATA FOR EDUCATION. VERIFY ON SCREENER.IN</p>
-    </div>
-    <!-- Also the mini watchlist from mockup -->
-    <div class="card" style="max-width:480px;margin:32px auto 0">
-      <div class="card-header"><div class="card-title">MY WATCHLIST</div><a href="#" class="card-subtitle">VIEW ALL →</a></div>
-      <div class="watchlist-item">
-        <div class="watchlist-icon">📊</div>
-        <div class="watchlist-name">ITC Limited</div>
-        <div class="percentage-bar" style="flex:1;margin:0 12px"><div class="percentage-fill" style="width:92%"></div></div>
-        <div class="watchlist-percent">92%</div>
-      </div>
-      <div class="watchlist-item">
-        <div class="watchlist-icon">📊</div>
-        <div class="watchlist-name">Tata Consultancy</div>
-        <div class="percentage-bar" style="flex:1;margin:0 12px"><div class="percentage-fill" style="width:94%"></div></div>
-        <div class="watchlist-percent">94%</div>
-      </div>
-      <div class="watchlist-item">
-        <div class="watchlist-icon">📊</div>
-        <div class="watchlist-name">Larsen & Toubro</div>
-        <div class="percentage-bar" style="flex:1;margin:0 12px"><div class="percentage-fill" style="width:91%"></div></div>
-        <div class="watchlist-percent">91%</div>
-      </div>
     </div>
   </div>
 </section>
@@ -407,46 +372,16 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   </div></div>
 </section>
 
-<!-- WIZARD -->
-<section class="section" id="wizard">
-  <div class="section-inner" style="text-align:center">
-    <h2 class="headline" style="font-size:clamp(28px,5vw,42px);margin-bottom:24px">TEST A STOCK <span class="headline-accent">YOURSELF.</span></h2>
-    <div class="wizard-wrap">
-      <div class="wizard-card" id="wizardCard">
-        <div class="wizard-step active" id="step1">
-          <p class="card-title">STEP 1: INTEREST INCOME</p>
-          <input type="number" class="wizard-input" id="interestInput" placeholder="e.g. 1.5" step="0.1"/>
-          <div class="wizard-feedback" id="interestFeedback"></div>
-          <button class="btn btn-primary" style="margin-top:16px" onclick="nextWizardStep()">NEXT →</button>
-        </div>
-        <div class="wizard-step" id="step2">
-          <p class="card-title">STEP 2: DEBT RATIO</p>
-          <input type="number" class="wizard-input" id="debtInput" placeholder="e.g. 25" step="0.1"/>
-          <div class="wizard-feedback" id="debtFeedback"></div>
-          <button class="btn btn-primary" style="margin-top:16px" onclick="nextWizardStep()">NEXT →</button>
-        </div>
-        <div class="wizard-step" id="step3">
-          <p class="card-title">STEP 3: ILLIQUID ASSETS</p>
-          <input type="number" class="wizard-input" id="liquidInput" placeholder="e.g. 45" step="0.1"/>
-          <div class="wizard-feedback" id="liquidFeedback"></div>
-          <button class="btn btn-primary" style="margin-top:16px" onclick="showWizardResult()">SHOW VERDICT</button>
-        </div>
-        <div class="wizard-result" id="wizardResult"></div>
-        <button id="resetWizardBtn" style="display:none;margin-top:16px" class="btn btn-outline" onclick="resetWizard()">START OVER</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COMMUNITY HIGHLIGHTS -->
-<section class="section" id="community" style="background:#F5F5F7">
+<!-- QUICK TIPS (new) -->
+<section class="section" id="tips">
   <div class="section-inner">
-    <h2 class="headline" style="font-size:clamp(28px,5vw,42px);margin-bottom:24px">COMMUNITY <span class="headline-accent">HIGHLIGHTS.</span></h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:600px;margin:0 auto">
-      <div class="card" style="text-align:center"><div style="font-size:32px;margin-bottom:8px">❓</div><p style="font-weight:600">Is this stock suitable?</p><p style="font-size:13px;color:var(--text-secondary)">Community Q&A</p></div>
-      <div class="card" style="text-align:center"><div style="font-size:32px;margin-bottom:8px">💧</div><p style="font-weight:600">Purification: When necessary?</p><p style="font-size:13px;color:var(--text-secondary)">Expert insights</p></div>
-      <div class="card" style="text-align:center"><div style="font-size:32px;margin-bottom:8px">💰</div><p style="font-weight:600">Zakat on Shares</p><p style="font-size:13px;color:var(--text-secondary)">Detailed guide</p></div>
-      <div class="card" style="text-align:center"><div style="font-size:32px;margin-bottom:8px">📈</div><p style="font-weight:600">Halal Portfolio Building</p><p style="font-size:13px;color:var(--text-secondary)">Best practices</p></div>
+    <h2 class="headline" style="font-size:clamp(28px,5vw,42px);margin-bottom:24px">QUICK <span class="headline-accent">TIPS.</span></h2>
+    <div class="tip-card" id="tipCard">
+      <p class="tip-text" id="tipText">“Always check the latest quarterly report on Screener.in before investing.”</p>
+      <p class="tip-author" id="tipAuthor">— Envestment</p>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:16px;">
+      <button class="btn btn-outline" onclick="nextTip()">NEXT TIP →</button>
     </div>
   </div>
 </section>
@@ -545,7 +480,7 @@ function runScreener(){
   el.innerHTML=`
     <div class="card">
       <div class="card-header">
-        <div><div class="card-title">${d.name} (${sym})</div><div class="card-subtitle">📌 Shariah Compliant</div></div>
+        <div><div class="card-title">${d.name} (${sym})</div><div class="card-subtitle" style="font-size:13px;color:var(--text-secondary)">📌 Shariah Compliant</div></div>
         <div style="font-size:32px;font-weight:800;color:${statusColor}">${d.compliant}%</div>
       </div>
       <div class="percentage-bar"><div class="percentage-fill" style="width:${d.compliant}%"></div></div>
@@ -565,10 +500,10 @@ document.getElementById('stockInput').addEventListener('keypress',e=>{if(e.key==
 // Full watchlist table
 function buildFullWatchlist(){
   let rows=Object.entries(stocksDatabase).map(([sym,d])=>{
-    const badge=d.status==='halal'?'<span class="badge badge-halal">✓ HALAL</span>':d.status==='haram'?'<span class="badge badge-haram">✗ HARAM</span>':'<span class="badge badge-caution">⚠ CAUTION</span>';
+    const badge=d.status==='halal'?'<span class="badge badge-halal" style="background:rgba(46,125,50,0.08);color:#2E7D32;padding:3px 8px;border-radius:20px;font-size:10px">✓ HALAL</span>':d.status==='haram'?'<span class="badge badge-haram" style="background:rgba(198,40,40,0.08);color:#C62828;padding:3px 8px;border-radius:20px;font-size:10px">✗ HARAM</span>':'<span class="badge badge-caution" style="background:rgba(230,81,0,0.08);color:#E65100;padding:3px 8px;border-radius:20px;font-size:10px">⚠ CAUTION</span>';
     return `<tr><td><strong>${sym}</strong></td><td>${d.sector}</td><td>${d.interest}%</td><td>${d.debt}%</td><td>${d.compliant}%</td><td>${badge}</td></tr>`;
   }).join('');
-  document.getElementById('fullWatchlistTable').innerHTML=`<table class="data-table"><thead><tr><th>SYMBOL</th><th>SECTOR</th><th>INTEREST</th><th>DEBT</th><th>COMPLIANCE</th><th>STATUS</th></tr></thead><tbody>${rows}</tbody></table>`;
+  document.getElementById('fullWatchlistTable').innerHTML=`<table class="data-table" style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr style="background:#F5F5F7"><th style="padding:12px 16px;text-align:left">SYMBOL</th><th style="padding:12px 16px;text-align:left">SECTOR</th><th style="padding:12px 16px;text-align:left">INTEREST</th><th style="padding:12px 16px;text-align:left">DEBT</th><th style="padding:12px 16px;text-align:left">COMPLIANCE</th><th style="padding:12px 16px;text-align:left">STATUS</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
 buildFullWatchlist();
 function toggleWatchlist(){
@@ -579,9 +514,25 @@ function toggleWatchlist(){
   else{w.style.display='none';i.textContent='▸';t.textContent='SHOW TABLE'}
 }
 
+// ── CALCULATOR FUNCTIONS ──
+function calcPurification(){
+  const interest = parseFloat(document.getElementById('purInterest').value) || 0;
+  const other = parseFloat(document.getElementById('purOther').value) || 0;
+  const total = interest + other;
+  document.getElementById('purTotal').textContent = '₹' + total.toLocaleString('en-IN');
+}
+function calcZakat(){
+  const wealth = parseFloat(document.getElementById('zakatWealth').value) || 0;
+  const nisabMet = document.getElementById('nisabMet').value;
+  let zakat = 0;
+  if(nisabMet === 'yes' && wealth > 0){
+    zakat = wealth * 0.025;
+  }
+  document.getElementById('zakatTotal').textContent = '₹' + Math.round(zakat).toLocaleString('en-IN');
+}
 // Growth calc
 function fmt(n){return'₹'+Math.round(n).toLocaleString('en-IN')}
-function updateCalc(){
+function updateGrowthCalc(){
   const m=+document.getElementById('invRange').value,y=+document.getElementById('yrsRange').value,r=+document.getElementById('retRange').value/100;
   document.getElementById('invVal').textContent=fmt(m);
   document.getElementById('yrsVal').textContent=y+' YEAR'+(y>1?'S':'');
@@ -594,7 +545,7 @@ function updateCalc(){
   document.getElementById('rFV').textContent=fmt(fv);
   document.getElementById('rNet').textContent=fmt(net);
 }
-updateCalc();
+updateGrowthCalc();
 
 // Flashcards
 const cards=[{q:'IS GOLD HALAL?',a:'Physical gold, coins, bars, and gold ETFs are halal. Avoid SGB (2.5% interest).'},{q:'WHAT IS RIBA?',a:'Riba means interest — any guaranteed return on a loan. Prohibited in Quran (2:275).'},{q:'DEBT RATIO LIMIT?',a:'<33% of total assets or market cap.'},{q:'PURIFICATION?',a:'If impure income <5%, donate that % of dividends to charity (not Zakat).'},{q:'HALAL MUTUAL FUNDS?',a:'Yes: Tata Ethical, Taurus Ethical. SIP from ₹500.'},{q:'ZAKAT ON INVESTMENTS?',a:'2.5% on wealth held one lunar year above Nisab.'},{q:'ARE REITS HALAL?',a:'If tenants are halal, debt <33%, interest <5%.'},{q:'WHAT ARE SUKUK?',a:'Islamic bonds — profit-sharing, no interest.'},{q:'CAN I USE GROWW?',a:'Yes, just buy halal products.'},{q:'WHAT IS GHARAR?',a:'Excessive uncertainty — options, futures are haram.'},{q:'IS DAY TRADING HALAL?',a:'Controversial; long-term investing preferred.'},{q:'BANK ACCOUNTS?',a:'Avoid interest; donate if forced.'},{q:'SGB HALAL?',a:'No. Sovereign Gold Bonds pay 2.5% interest — haram.'},{q:'TATA ETHICAL FUND?',a:"India's largest Shariah-compliant mutual fund. Screened quarterly."},{q:'HOW TO SCREEN A STOCK?',a:'4-step AAOIFI test: business activity, interest <5%, debt <33%, illiquid >33%.'},{q:'WHAT IS AAOIFI?',a:'Accounting and Auditing Organization for Islamic Financial Institutions.'},{q:'CAN I INVEST IN RELIANCE?',a:'Caution required. Diversified business, debt near limits. Verify and consult a scholar.'},{q:'ARE DIVIDENDS HALAL?',a:'Yes, if the stock passes screening. Purify if minor impure income.'},{q:'WHAT IS NISAB?',a:'Minimum wealth for Zakat — value of 85g gold or 595g silver.'},{q:'IS CRYPTO HALAL?',a:'Scholarly debate. Some permit Bitcoin as digital asset. Consult a scholar.'}];
@@ -614,49 +565,18 @@ function nextCard(){curCard=(curCard+1)%cards.length;setCard()}
 function prevCard(){curCard=(curCard-1+cards.length)%cards.length;setCard()}
 setCard();
 
-// Wizard
-let wizardStep=1;
-function nextWizardStep(){
-  const interest=parseFloat(document.getElementById('interestInput').value);
-  const debt=parseFloat(document.getElementById('debtInput').value);
-  if(wizardStep===1){
-    if(isNaN(interest)||interest<0){alert('Enter valid interest %');return}
-    const pass=interest<5;
-    document.getElementById('interestFeedback').textContent=pass?'✓ Interest <5% (PASS)':'✗ Interest >5% (FAIL)';
-    document.getElementById('interestFeedback').className='wizard-feedback '+(pass?'pass':'fail');
-    document.getElementById('step1').classList.remove('active');document.getElementById('step2').classList.add('active');
-    wizardStep=2;
-  }else if(wizardStep===2){
-    if(isNaN(debt)||debt<0){alert('Enter valid debt %');return}
-    const pass=debt<33;
-    document.getElementById('debtFeedback').textContent=pass?'✓ Debt <33% (PASS)':'✗ Debt >33% (FAIL)';
-    document.getElementById('debtFeedback').className='wizard-feedback '+(pass?'pass':'fail');
-    document.getElementById('step2').classList.remove('active');document.getElementById('step3').classList.add('active');
-    wizardStep=3;
-  }
-}
-function showWizardResult(){
-  const liquid=parseFloat(document.getElementById('liquidInput').value);
-  if(isNaN(liquid)||liquid<0){alert('Enter valid illiquid %');return}
-  const pass=liquid>33;
-  document.getElementById('liquidFeedback').textContent=pass?'✓ Illiquid >33% (PASS)':'✗ Illiquid <33% (FAIL)';
-  document.getElementById('liquidFeedback').className='wizard-feedback '+(pass?'pass':'fail');
-  document.getElementById('step3').classList.remove('active');
-  const iP=parseFloat(document.getElementById('interestInput').value)<5;
-  const dP=parseFloat(document.getElementById('debtInput').value)<33;
-  const allPass=iP&&dP&&pass;
-  const rd=document.getElementById('wizardResult');rd.style.display='block';
-  if(allPass){rd.className='wizard-result halal';rd.innerHTML='<p class="card-title" style="color:#2E7D32">✓ LIKELY HALAL</p>'}
-  else if(!iP&&!dP&&!pass){rd.className='wizard-result haram';rd.innerHTML='<p class="card-title" style="color:#C62828">✗ LIKELY HARAM</p>'}
-  else{rd.className='wizard-result caution';rd.innerHTML='<p class="card-title" style="color:#E65100">⚠ CAUTION</p>'}
-  document.getElementById('resetWizardBtn').style.display='block';
-}
-function resetWizard(){
-  document.getElementById('step1').classList.add('active');document.getElementById('step2').classList.remove('active');document.getElementById('step3').classList.remove('active');
-  document.getElementById('interestInput').value='';document.getElementById('debtInput').value='';document.getElementById('liquidInput').value='';
-  document.getElementById('interestFeedback').textContent='';document.getElementById('debtFeedback').textContent='';document.getElementById('liquidFeedback').textContent='';
-  document.getElementById('wizardResult').style.display='none';document.getElementById('resetWizardBtn').style.display='none';
-  wizardStep=1;
+// Tips
+const tips = [
+  { text: "“Always check the latest quarterly report on Screener.in before investing.”", author: "Envestment" },
+  { text: "“Purify your earnings by donating the impure portion — not as Zakat.”", author: "Islamic Finance Principle" },
+  { text: "“Debt‑free companies recover faster during market downturns.”", author: "AAOIFI Insight" },
+  { text: "“Start your halal portfolio with a Shariah‑compliant mutual fund.”", author: "Beginner Tip" },
+];
+let tipIndex = 0;
+function nextTip(){
+  tipIndex = (tipIndex + 1) % tips.length;
+  document.getElementById('tipText').textContent = tips[tipIndex].text;
+  document.getElementById('tipAuthor').textContent = "— " + tips[tipIndex].author;
 }
 
 // Mobile menu
