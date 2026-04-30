@@ -85,14 +85,14 @@ ul{list-style:none}
 }
 
 /* SECTIONS */
-.section{padding:100px 0}
-@media(max-width:768px){.section{padding:64px 0}}
+.section{padding:80px 0}
+@media(max-width:768px){.section{padding:48px 0}}
 .section-inner{max-width:980px;margin:0 auto;padding:0 22px}
 
 /* TYPOGRAPHY */
-.headline{font-size:clamp(40px,7vw,80px);font-weight:800;color:var(--text-primary);line-height:1.06;letter-spacing:-0.04em;text-transform:uppercase;text-align:center;}
+.headline{font-size:clamp(36px,7vw,72px);font-weight:800;color:var(--text-primary);line-height:1.06;letter-spacing:-0.04em;text-transform:uppercase;text-align:center;}
 .headline-accent{background:var(--accent-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.subhead{font-size:clamp(17px,2vw,21px);font-weight:400;color:var(--text-secondary);line-height:1.5;max-width:560px;margin:20px auto 0;text-align:center;}
+.subhead{font-size:clamp(16px,2vw,19px);font-weight:400;color:var(--text-secondary);line-height:1.5;max-width:560px;margin:16px auto 0;text-align:center;}
 .eyebrow{font-size:17px;font-weight:600;color:var(--text-primary);letter-spacing:-0.022em;margin-bottom:12px;text-transform:uppercase;text-align:center;}
 .caption{font-size:12px;font-weight:500;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.02em;}
 
@@ -103,146 +103,139 @@ ul{list-style:none}
 .btn-outline{background:transparent;color:#1D1D1F;border:1px solid #1D1D1F;}
 .btn-outline:hover{background:rgba(0,0,0,0.04);transform:scale(1.03)}
 
-/* CARDS */
-.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
-@media(max-width:768px){.card-grid{grid-template-columns:1fr}}
-.card-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-@media(max-width:768px){.card-grid-3{grid-template-columns:1fr}}
-.card-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-@media(max-width:1024px){.card-grid-4{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:500px){.card-grid-4{grid-template-columns:1fr}}
-.card{background:var(--bg-card);border-radius:var(--radius-md);padding:32px;transition:all var(--transition-smooth);border:1px solid var(--border);}
-.card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--border-strong);}
-.card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;background:rgba(190,183,164,0.12);color:var(--accent);}
-.card-tag{font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px;}
-.card-title{font-size:20px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;margin-bottom:8px;text-transform:uppercase;}
-.card-text{font-size:14px;color:var(--text-secondary);line-height:1.6;}
-.card-list{margin-top:14px;display:flex;flex-direction:column;gap:8px;}
-.card-list li{font-size:13px;font-weight:500;color:var(--text-primary);padding:10px 14px;background:var(--bg-card);border-radius:10px;display:flex;align-items:center;gap:8px;border:1px solid var(--border);}
-.card-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;}
-
 /* TRUST BADGES */
-.trust-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;}
+.trust-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
 @media(max-width:768px){.trust-strip{grid-template-columns:1fr}}
-.trust-item{background:var(--bg-card);border-radius:var(--radius-md);padding:28px;text-align:center;border:1px solid var(--border);}
-.trust-icon{font-size:28px;margin-bottom:10px}
-.trust-title{font-size:15px;font-weight:700;color:var(--text-primary);text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:4px;}
+.trust-item{background:var(--bg-card);border-radius:var(--radius-md);padding:24px;text-align:center;border:1px solid var(--border);}
+.trust-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 12px;color:var(--accent);background:rgba(190,183,164,0.12);}
+.trust-title{font-size:14px;font-weight:700;color:var(--text-primary);text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:4px;}
 .trust-desc{font-size:12px;color:var(--text-secondary);line-height:1.5;}
 
+/* FEATURE CARDS */
+.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px;}
+@media(max-width:768px){.feature-grid{grid-template-columns:1fr}}
+.feature-card{background:var(--bg-card);border-radius:var(--radius-md);padding:28px;border:1px solid var(--border);text-align:center;}
+.feature-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;margin:0 auto 14px;background:rgba(190,183,164,0.12);color:var(--accent);}
+.feature-title{font-size:18px;font-weight:700;color:var(--text-primary);text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:6px;}
+.feature-text{font-size:13px;color:var(--text-secondary);line-height:1.6;}
+
+/* QUICK TOOLS */
+.tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px;}
+@media(max-width:768px){.tools-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:400px){.tools-grid{grid-template-columns:1fr}}
+.tool-card{background:var(--bg-card);border-radius:var(--radius-md);padding:20px;text-align:center;border:1px solid var(--border);}
+.tool-icon{font-size:26px;margin-bottom:8px;color:var(--accent);}
+.tool-title{font-size:13px;font-weight:600;color:var(--text-primary);text-transform:uppercase;}
+
+/* TOPICS */
+.topics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px;}
+@media(max-width:768px){.topics-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:400px){.topics-grid{grid-template-columns:1fr}}
+.topic-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 18px;font-size:14px;font-weight:500;color:var(--text-primary);transition:all var(--transition-fast);display:flex;align-items:center;gap:8px;}
+.topic-item:hover{background:rgba(190,183,164,0.08);border-color:var(--accent)}
+.topic-item::before{content:'→';color:var(--accent);font-weight:700;}
+
 /* TABLE */
-.table-wrap{
-  overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius-lg);border:1px solid var(--border);
-  touch-action:pan-x;
-}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius-lg);border:1px solid var(--border);touch-action:pan-x;margin-top:20px;}
 .data-table{width:100%;border-collapse:collapse;font-size:13px;min-width:600px;}
-.data-table thead th{background:var(--bg-body);padding:14px 18px;font-size:10px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.1em;text-align:left;position:sticky;top:0;}
-.data-table tbody td{padding:14px 18px;border-bottom:1px solid var(--border);font-weight:500;color:var(--text-primary);}
-.data-table tbody tr:hover{background:rgba(0,0,0,0.01)}
-.badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:var(--radius-pill);font-size:10px;font-weight:700;letter-spacing:0.04em;}
-.badge-halal{background:rgba(46,125,50,0.06);color:#2E7D32;}
-.badge-caution{background:rgba(230,81,0,0.06);color:#E65100;}
-.badge-haram{background:rgba(198,40,40,0.06);color:#C62828;}
+.data-table thead th{background:var(--bg-body);padding:12px 16px;font-size:10px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.1em;text-align:left;position:sticky;top:0;}
+.data-table tbody td{padding:12px 16px;border-bottom:1px solid var(--border);font-weight:500;color:var(--text-primary);}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:var(--radius-pill);font-size:10px;font-weight:700;letter-spacing:0.04em;}
+.badge-halal{background:rgba(46,125,50,0.08);color:#2E7D32;}
+.badge-caution{background:rgba(230,81,0,0.08);color:#E65100;}
+.badge-haram{background:rgba(198,40,40,0.08);color:#C62828;}
 
 /* SCREENER */
 .screener-wrap{max-width:560px;margin:0 auto;text-align:center}
-.screener-input-row{display:flex;gap:10px;margin-top:28px}
+.screener-input-row{display:flex;gap:10px;margin-top:20px}
 @media(max-width:500px){.screener-input-row{flex-direction:column}}
 .screener-input{flex:1;padding:14px 18px;border:1px solid var(--border-strong);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text-primary);background:var(--bg-card);outline:none;transition:border-color 0.2s;}
 .screener-input:focus{border-color:var(--accent)}
-.pill-row{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.pill-row{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:10px}
 .pill{background:rgba(190,183,164,0.12);color:#1D1D1F;padding:6px 14px;border-radius:var(--radius-pill);font-size:11px;font-weight:600;cursor:pointer;border:1px solid transparent;transition:all var(--transition-fast)}
 .pill:hover{background:rgba(190,183,164,0.22);border-color:var(--accent)}
-.result-container{display:none;margin-top:24px}
+.result-container{display:none;margin-top:20px}
 
 /* CALCULATOR */
-.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
 @media(max-width:768px){.calc-grid{grid-template-columns:1fr}}
-.calc-form{background:var(--bg-card);border-radius:var(--radius-lg);padding:36px;border:1px solid var(--border)}
-.calc-result{background:#1D1D1F;border-radius:var(--radius-lg);padding:36px;color:#FFF}
-.calc-group{margin-bottom:24px}
+.calc-form{background:var(--bg-card);border-radius:var(--radius-lg);padding:28px;border:1px solid var(--border)}
+.calc-result{background:#1D1D1F;border-radius:var(--radius-lg);padding:28px;color:#FFF}
+.calc-group{margin-bottom:20px}
 .calc-label{font-size:10px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;display:block}
-.calc-value{font-size:36px;font-weight:800;color:var(--text-primary);letter-spacing:-0.04em;display:block;margin-bottom:6px}
-/* RANGE SLIDER – BROWN THUMB */
-input[type=range]{
-  width:100%;height:4px;accent-color:var(--accent);-webkit-appearance:none;background:transparent;
-}
-input[type=range]::-webkit-slider-thumb{
-  -webkit-appearance:none;width:20px;height:20px;border-radius:50%;
-  background:var(--accent);border:2px solid #FFFFFF;box-shadow:0 1px 4px rgba(0,0,0,0.15);cursor:pointer;
-}
-input[type=range]::-moz-range-thumb{
-  width:20px;height:20px;border-radius:50%;
-  background:var(--accent);border:2px solid #FFFFFF;box-shadow:0 1px 4px rgba(0,0,0,0.15);cursor:pointer;
-}
-.calc-row{display:flex;justify-content:space-between;align-items:flex-end;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.calc-value{font-size:32px;font-weight:800;color:var(--text-primary);letter-spacing:-0.04em;display:block;margin-bottom:6px}
+input[type=range]{width:100%;height:4px;accent-color:var(--accent);-webkit-appearance:none;background:transparent;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent);border:2px solid #FFFFFF;box-shadow:0 2px 6px rgba(0,0,0,0.12);cursor:pointer;}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--accent);border:2px solid #FFFFFF;box-shadow:0 2px 6px rgba(0,0,0,0.12);cursor:pointer;}
+.calc-row{display:flex;justify-content:space-between;align-items:flex-end;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
 .calc-row:last-child{border-bottom:none}
 .calc-row-label{font-size:12px;font-weight:500;color:rgba(255,255,255,0.5)}
 .calc-row-value{font-size:18px;font-weight:700;color:#FFF;letter-spacing:-0.02em}
-.calc-row-value.lg{font-size:28px}
+.calc-row-value.lg{font-size:26px}
 .calc-row-value.accent{color:#D4C9B0}
 
 /* FLASHCARDS */
 .flashcard-wrap{max-width:480px;margin:0 auto;text-align:center}
-.flashcard{perspective:1000px;height:240px;cursor:pointer;margin-bottom:18px}
+.flashcard{perspective:1000px;height:230px;cursor:pointer;margin-bottom:16px}
 .flashcard-inner{position:relative;width:100%;height:100%;transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);transform-style:preserve-3d}
 .flashcard.flipped .flashcard-inner{transform:rotateY(180deg)}
-.flashcard-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center}
+.flashcard-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center}
 .flashcard-front{background:var(--bg-card);border:1px solid var(--border)}
-.flashcard-front .f-tag{font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:14px}
-.flashcard-front .f-q{font-size:24px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em;line-height:1.2;text-transform:uppercase}
+.flashcard-front .f-tag{font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:12px}
+.flashcard-front .f-q{font-size:22px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em;line-height:1.3;text-transform:uppercase}
 .flashcard-back{background:#1D1D1F;transform:rotateY(180deg);color:#FFF}
-.flashcard-back .f-a{font-size:15px;font-weight:400;line-height:1.6}
-.flashcard-nav{display:flex;gap:10px;justify-content:center}
-.flashcard-nav button{background:var(--bg-card);color:#1D1D1F;padding:10px 22px;border-radius:var(--radius-pill);font-size:13px;font-weight:600;border:1px solid var(--border);cursor:pointer;transition:all var(--transition-fast)}
+.flashcard-back .f-a{font-size:14px;font-weight:400;line-height:1.6}
+.flashcard-nav{display:flex;gap:8px;justify-content:center;margin-top:8px}
+.flashcard-nav button{background:var(--bg-card);color:#1D1D1F;padding:8px 20px;border-radius:var(--radius-pill);font-size:12px;font-weight:600;border:1px solid var(--border);cursor:pointer;transition:all var(--transition-fast)}
 .flashcard-nav button:hover{background:var(--accent);color:#1D1D1F;border-color:var(--accent)}
-.flashcard-dots{display:flex;gap:5px;justify-content:center;margin-top:14px}
+.flashcard-dots{display:flex;gap:5px;justify-content:center;margin-top:10px}
 .f-dot{width:6px;height:6px;border-radius:50%;background:var(--border-strong);transition:all 0.3s}
 .f-dot.active{background:var(--accent);width:18px;border-radius:3px}
 
 /* WIZARD */
-.wizard-wrap{max-width:600px;margin:0 auto}
-.wizard-card{background:var(--bg-card);border-radius:24px;padding:36px;text-align:center;border:1px solid var(--border);}
+.wizard-wrap{max-width:560px;margin:0 auto}
+.wizard-card{background:var(--bg-card);border-radius:24px;padding:32px;text-align:center;border:1px solid var(--border);}
 .wizard-step{display:none}
 .wizard-step.active{display:block}
 .wizard-input{width:100%;padding:14px 18px;border:1px solid var(--border-strong);border-radius:12px;font-size:15px;font-family:'Inter',sans-serif;margin-top:12px;outline:none;background:var(--bg-card)}
 .wizard-input:focus{border-color:var(--accent)}
-.wizard-feedback{font-size:13px;margin-top:10px;font-weight:600;min-height:20px}
+.wizard-feedback{font-size:13px;margin-top:8px;font-weight:600;min-height:20px}
 .wizard-feedback.pass{color:#2E7D32}
 .wizard-feedback.fail{color:#C62828}
-.wizard-result{display:none;margin-top:20px;padding:20px;border-radius:14px}
+.wizard-result{display:none;margin-top:16px;padding:16px;border-radius:12px}
 .wizard-result.halal{background:rgba(46,125,50,0.04);border:1px solid rgba(46,125,50,0.15)}
 .wizard-result.haram{background:rgba(198,40,40,0.04);border:1px solid rgba(198,40,40,0.15)}
 .wizard-result.caution{background:rgba(230,81,0,0.04);border:1px solid rgba(230,81,0,0.15)}
 
 /* QURAN VERSE */
-.verse-section{background:#1D1D1F;padding:80px 0;text-align:center;color:#FFF;}
-.verse-text{font-size:clamp(18px,2.5vw,26px);font-weight:300;font-style:italic;max-width:720px;margin:0 auto;line-height:1.7;color:rgba(255,255,255,0.9);}
-.verse-source{font-size:13px;font-weight:500;color:var(--accent);margin-top:12px;text-transform:uppercase;letter-spacing:0.08em;}
+.verse-section{background:#1D1D1F;padding:60px 0;text-align:center;color:#FFF;}
+.verse-text{font-size:clamp(16px,2.4vw,24px);font-weight:300;font-style:italic;max-width:680px;margin:0 auto;line-height:1.7;color:rgba(255,255,255,0.9);}
+.verse-source{font-size:12px;font-weight:500;color:var(--accent);margin-top:10px;text-transform:uppercase;letter-spacing:0.08em;}
 
 /* DISCLAIMER */
-.disclaimer-section{padding:60px 0;text-align:center;}
-.disclaimer-text{font-size:14px;color:var(--text-secondary);max-width:560px;margin:0 auto;line-height:1.7;}
+.disclaimer-section{padding:48px 0;text-align:center;}
+.disclaimer-text{font-size:13px;color:var(--text-secondary);max-width:540px;margin:0 auto;line-height:1.6;}
 
 /* FOOTER */
-.footer{background:#1D1D1F;padding:60px 22px 32px;font-size:12px;color:rgba(255,255,255,0.7)}
-.footer-inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.1)}
-@media(max-width:768px){.footer-inner{grid-template-columns:1fr;gap:28px}}
+.footer{background:#1D1D1F;padding:48px 22px 28px;font-size:12px;color:rgba(255,255,255,0.7)}
+.footer-inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.1)}
+@media(max-width:768px){.footer-inner{grid-template-columns:1fr;gap:24px}}
 .footer-brand h4{font-size:18px;font-weight:700;color:#FFF;letter-spacing:-0.02em;margin-bottom:6px;text-transform:uppercase}
 .footer-brand p{font-size:12px;color:rgba(255,255,255,0.5);max-width:240px;line-height:1.5}
-.footer-col h6{font-size:10px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px}
+.footer-col h6{font-size:10px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px}
 .footer-col a{display:block;font-size:12px;color:rgba(255,255,255,0.5);padding:4px 0;transition:color 0.2s}
 .footer-col a:hover{color:#FFF}
-.footer-bottom{max-width:980px;margin:20px auto 0;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.3)}
+.footer-bottom{max-width:980px;margin:16px auto 0;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.3)}
 @media(max-width:500px){.footer-bottom{flex-direction:column;gap:4px}}
 
 /* CHATBOT */
-.chatbot-toggle{position:fixed;bottom:20px;right:20px;z-index:10001;width:52px;height:52px;border-radius:50%;background:#1D1D1F;color:#FFF;border:none;font-size:22px;box-shadow:var(--shadow-lg);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:0.3s}
+.chatbot-toggle{position:fixed;bottom:20px;right:20px;z-index:10001;width:48px;height:48px;border-radius:50%;background:#1D1D1F;color:#FFF;border:none;font-size:20px;box-shadow:var(--shadow-lg);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:0.3s}
 .chatbot-toggle:hover{background:var(--accent);color:#1D1D1F;transform:scale(1.05)}
-.chatbot-window{display:none;position:fixed;bottom:85px;right:20px;z-index:10002;width:340px;max-width:90vw;height:460px;max-height:65vh;background:var(--bg-card);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);flex-direction:column;overflow:hidden;border:1px solid var(--border)}
+.chatbot-window{display:none;position:fixed;bottom:80px;right:20px;z-index:10002;width:320px;max-width:90vw;height:420px;max-height:60vh;background:var(--bg-card);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);flex-direction:column;overflow:hidden;border:1px solid var(--border)}
 .chatbot-window.open{display:flex}
-.chatbot-header{background:#1D1D1F;color:#FFF;padding:14px 18px;font-weight:600;display:flex;justify-content:space-between;align-items:center;font-size:14px}
-.chatbot-body{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px}
-.chatbot-msg{max-width:85%;padding:10px 14px;border-radius:16px;font-size:13px;line-height:1.5;word-wrap:break-word}
+.chatbot-header{background:#1D1D1F;color:#FFF;padding:12px 16px;font-weight:600;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.chatbot-body{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.chatbot-msg{max-width:85%;padding:10px 12px;border-radius:14px;font-size:13px;line-height:1.5;word-wrap:break-word}
 .chatbot-msg.bot{background:rgba(190,183,164,0.12);align-self:flex-start}
 .chatbot-msg.user{background:#1D1D1F;color:#FFF;align-self:flex-end}
 .chatbot-input-row{display:flex;border-top:1px solid var(--border);padding:8px}
@@ -250,7 +243,7 @@ input[type=range]::-moz-range-thumb{
 .chatbot-input-row button{background:#1D1D1F;color:#FFF;border:none;padding:8px 14px;border-radius:var(--radius-pill);font-weight:600;cursor:pointer;font-size:12px}
 
 /* REVEAL */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity 0.7s ease,transform 0.7s ease}
 .reveal.visible{opacity:1;transform:none}
 </style>
 </head>
@@ -259,13 +252,9 @@ input[type=range]::-moz-range-thumb{
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#features" onclick="closeMobile()">FEATURES</a>
-  <a href="#investments" onclick="closeMobile()">INVESTMENTS</a>
-  <a href="#wizard" onclick="closeMobile()">WIZARD</a>
-  <a href="#platforms" onclick="closeMobile()">PLATFORMS</a>
+  <a href="#tools" onclick="closeMobile()">TOOLS</a>
   <a href="#screener" onclick="closeMobile()">SCREENER</a>
   <a href="#watchlist" onclick="closeMobile()">WATCHLIST</a>
-  <a href="#guide" onclick="closeMobile()">GUIDE</a>
-  <a href="#tools" onclick="closeMobile()">TOOLS</a>
   <a href="#learn" onclick="closeMobile()">LEARN</a>
   <button class="nav-cta" onclick="closeMobile();document.getElementById('screener').scrollIntoView({behavior:'smooth'})">SCREEN A STOCK</button>
 </div>
@@ -276,13 +265,9 @@ input[type=range]::-moz-range-thumb{
     <a href="#" class="nav-logo">ETHICAL <span class="brand-accent">INVEST</span></a>
     <ul class="nav-links">
       <li><a href="#features">FEATURES</a></li>
-      <li><a href="#investments">INVESTMENTS</a></li>
-      <li><a href="#wizard">WIZARD</a></li>
-      <li><a href="#platforms">PLATFORMS</a></li>
+      <li><a href="#tools">TOOLS</a></li>
       <li><a href="#screener">SCREENER</a></li>
       <li><a href="#watchlist">WATCHLIST</a></li>
-      <li><a href="#guide">GUIDE</a></li>
-      <li><a href="#tools">TOOLS</a></li>
       <li><a href="#learn">LEARN</a></li>
     </ul>
     <a href="#screener" class="nav-cta">SCREEN A STOCK</a>
@@ -291,7 +276,7 @@ input[type=range]::-moz-range-thumb{
 </nav>
 
 <!-- HERO -->
-<section class="section" style="padding-top:140px">
+<section class="section" style="padding-top:120px">
   <div class="section-inner" style="text-align:center">
     <h1 class="headline reveal">INVEST WITH FAITH.<br>GROW WITH <span class="headline-accent">PURPOSE.</span></h1>
     <p class="subhead reveal">
@@ -302,7 +287,7 @@ input[type=range]::-moz-range-thumb{
       <div class="trust-item"><div class="trust-icon">📚</div><div class="trust-title">PURELY EDUCATIONAL</div><div class="trust-desc">Not Advisory. Not a Fatwa.</div></div>
       <div class="trust-item"><div class="trust-icon">🤲</div><div class="trust-title">FAITH‑CENTERED</div><div class="trust-desc">Built for Muslims. Rooted in Values.</div></div>
     </div>
-    <div class="reveal" style="margin-top:36px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <div class="reveal" style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
       <a href="#features" class="btn btn-primary">EXPLORE FEATURES</a>
       <a href="#screener" class="btn btn-outline">SCREEN A STOCK</a>
     </div>
@@ -312,17 +297,17 @@ input[type=range]::-moz-range-thumb{
 <!-- FEATURES -->
 <section class="section" id="features">
   <div class="section-inner">
-    <h2 class="headline reveal" style="font-size:clamp(32px,5vw,48px)">EVERYTHING YOU NEED<br>TO INVEST <span class="headline-accent">HALAL.</span></h2>
-    <div class="card-grid reveal" style="margin-top:48px">
-      <div class="card"><div class="card-icon">🔍</div><div class="card-title">SHARIAH STOCK SCREENING</div><div class="card-text">Instantly screen 50+ Indian stocks based on AAOIFI standards. Check interest income, debt ratios, and illiquid assets.</div></div>
-      <div class="card"><div class="card-icon">💧</div><div class="card-title">PURIFICATION CALCULATOR</div><div class="card-text">Calculate and purify non‑permissible earnings with transparency. Donate the impure portion to charity.</div></div>
-      <div class="card"><div class="card-icon">💰</div><div class="card-title">ZAKAT CALCULATOR</div><div class="card-text">Calculate your Zakat accurately — 2.5% on wealth held for one lunar year above the Nisab threshold.</div></div>
-      <div class="card"><div class="card-icon">📖</div><div class="card-title">LEARN & GROW</div><div class="card-text">20 essential flashcards covering Riba, Gharar, Sukuk, REITs, and more. Knowledge first, profits second.</div></div>
+    <h2 class="headline reveal" style="font-size:clamp(28px,5vw,42px)">EVERYTHING YOU NEED<br>TO INVEST <span class="headline-accent">HALAL.</span></h2>
+    <div class="feature-grid reveal">
+      <div class="feature-card"><div class="feature-icon">🔍</div><div class="feature-title">SHARIAH STOCK SCREENING</div><div class="feature-text">Instantly screen 50+ Indian stocks based on AAOIFI standards. Check interest income, debt ratios, and illiquid assets.</div></div>
+      <div class="feature-card"><div class="feature-icon">💧</div><div class="feature-title">PURIFICATION CALCULATOR</div><div class="feature-text">Calculate and purify non‑permissible earnings with transparency. Donate the impure portion to charity.</div></div>
+      <div class="feature-card"><div class="feature-icon">💰</div><div class="feature-title">ZAKAT CALCULATOR</div><div class="feature-text">Calculate your Zakat accurately — 2.5% on wealth held for one lunar year above the Nisab threshold.</div></div>
+      <div class="feature-card"><div class="feature-icon">📖</div><div class="feature-title">LEARN & GROW</div><div class="feature-text">20 essential flashcards covering Riba, Gharar, Sukuk, REITs, and more. Knowledge first, profits second.</div></div>
     </div>
   </div>
 </section>
 
-<!-- SECOND HERO / IMPACT -->
+<!-- SECOND IMPACT SECTION -->
 <section class="section">
   <div class="section-inner" style="text-align:center">
     <h2 class="headline reveal">HALAL INVESTING.<br><span class="headline-accent">REAL IMPACT.</span></h2>
@@ -338,125 +323,70 @@ input[type=range]::-moz-range-thumb{
   </div>
 </section>
 
-<!-- HALAL VS HARAM -->
-<section class="section" id="investments">
+<!-- QUICK TOOLS -->
+<section class="section" id="tools">
   <div class="section-inner">
-    <div style="text-align:center;margin-bottom:48px">
-      <p class="eyebrow reveal">UNDERSTANDING THE DIFFERENCE</p>
-      <h2 class="headline reveal">WHAT'S PERMISSIBLE<br>STARTS WITH <span class="headline-accent">KNOWLEDGE.</span></h2>
-    </div>
-    <div class="card-grid reveal">
-      <div class="card"><div class="card-icon">✗</div><div class="card-tag">HARAM</div><div class="card-title">PROHIBITED</div><ul class="card-list"><li>Riba (Interest) from savings/FD</li><li>Conventional bonds</li><li>Alcohol, gambling, pork stocks</li><li>High interest income (>5%)</li><li>Excessive debt (>33%)</li><li>SGB (2.5% interest)</li></ul></div>
-      <div class="card"><div class="card-icon">✓</div><div class="card-tag">HALAL</div><div class="card-title">PERMISSIBLE</div><ul class="card-list"><li>Shariah‑compliant MFs</li><li>Screened equities</li><li>Physical gold & ETFs</li><li>Halal REITs</li><li>Sukuk (Islamic bonds)</li><li>Halal business income</li></ul></div>
+    <h2 class="headline reveal" style="font-size:clamp(28px,5vw,42px)">QUICK <span class="headline-accent">TOOLS.</span></h2>
+    <div class="tools-grid reveal">
+      <div class="tool-card"><div class="tool-icon">🔍</div><div class="tool-title">STOCK SCREENING</div></div>
+      <div class="tool-card"><div class="tool-icon">💧</div><div class="tool-title">PURIFICATION CALCULATOR</div></div>
+      <div class="tool-card"><div class="tool-icon">💰</div><div class="tool-title">ZAKAT CALCULATOR</div></div>
+      <div class="tool-card"><div class="tool-icon">📊</div><div class="tool-title">WATCHLIST</div></div>
     </div>
   </div>
 </section>
 
-<!-- PLATFORMS -->
-<section class="section" id="platforms">
+<!-- POPULAR TOPICS -->
+<section class="section">
   <div class="section-inner">
-    <div style="text-align:center;margin-bottom:48px"><p class="eyebrow reveal">WHERE TO INVEST</p><h2 class="headline reveal">TRUSTED<br><span class="headline-accent">PLATFORMS.</span></h2></div>
-    <div class="card-grid reveal">
-      <div class="card">
-        <div class="card-icon">🌱</div><div class="card-title">GROWW</div><div class="card-text">Beginner‑friendly. Access Tata Ethical & Taurus Ethical funds. Start SIPs from ₹500.</div>
-        <ul class="card-list"><li>Free account opening</li><li>Zero commission on direct MFs</li><li>Step‑by‑step guided investing</li></ul>
-        <a href="https://groww.in" target="_blank" class="btn btn-primary" style="margin-top:14px;padding:10px 20px;font-size:12px">VISIT GROWW ↗</a>
-      </div>
-      <div class="card">
-        <div class="card-icon">📐</div><div class="card-title">ZERODHA</div><div class="card-text">Advanced tools. Coin for mutual funds, Smallcase for Shariah‑screened portfolios.</div>
-        <ul class="card-list"><li>₹200 account opening (equity)</li><li>Coin: zero commission on MFs</li><li>Smallcase: curated halal baskets</li></ul>
-        <a href="https://zerodha.com" target="_blank" class="btn btn-primary" style="margin-top:14px;padding:10px 20px;font-size:12px">VISIT ZERODHA ↗</a>
-      </div>
+    <h2 class="headline reveal" style="font-size:clamp(28px,5vw,42px)">POPULAR <span class="headline-accent">TOPICS.</span></h2>
+    <div class="topics-grid reveal">
+      <div class="topic-item">BASICS OF HALAL INVESTING</div>
+      <div class="topic-item">SHARIAH SCREENING EXPLAINED</div>
+      <div class="topic-item">RIBA AND WHY IT MATTERS</div>
+      <div class="topic-item">ZAKAT: A COMPLETE GUIDE</div>
+      <div class="topic-item">PURIFICATION OF INCOME</div>
     </div>
   </div>
 </section>
 
-<!-- SCREENER -->
+<!-- SCREENER (compact) -->
 <section class="section" id="screener">
   <div class="section-inner"><div class="screener-wrap">
     <p class="eyebrow reveal">STOCK SCREENER</p>
-    <h2 class="headline reveal">INSTANT<br><span class="headline-accent">COMPLIANCE</span><br>CHECK.</h2>
-    <p class="subhead reveal">50 pre‑screened Indian stocks. Data from public filings.</p>
+    <h2 class="headline reveal" style="font-size:clamp(28px,5vw,42px)">INSTANT<br><span class="headline-accent">COMPLIANCE</span><br>CHECK.</h2>
     <div class="screener-input-row reveal"><input type="text" class="screener-input" id="stockInput" placeholder="e.g. TCS, INFY, RELIANCE" autocomplete="off"/><button class="btn btn-primary" onclick="runScreener()">SCREEN</button></div>
     <div class="pill-row reveal" id="pillContainer"></div>
     <div class="result-container" id="screenerResult"></div>
   </div></div>
 </section>
 
-<!-- WATCHLIST -->
+<!-- WATCHLIST (collapsible) -->
 <section class="section" id="watchlist">
   <div class="section-inner">
-    <div style="text-align:center;margin-bottom:24px">
+    <div style="text-align:center;margin-bottom:20px">
       <p class="eyebrow reveal">FULL WATCHLIST</p>
-      <h2 class="headline reveal">50 PRE‑SCREENED<br><span class="headline-accent">HALAL</span> STOCKS.</h2>
-      <p class="subhead reveal">Always verify on <a href="https://screener.in" target="_blank" style="color:var(--accent);font-weight:600">Screener.in</a></p>
-    </div>
-    <div class="reveal" style="display:flex;justify-content:center;margin-bottom:18px">
-      <button class="btn btn-outline" id="toggleWatchlistBtn" onclick="toggleWatchlist()" style="gap:6px;font-size:12px;padding:8px 20px;">
-        <span id="toggleIcon">▾</span> <span id="toggleText">HIDE TABLE</span>
-      </button>
+      <h2 class="headline reveal" style="font-size:clamp(28px,5vw,42px)">50 PRE‑SCREENED<br><span class="headline-accent">HALAL</span> STOCKS.</h2>
+      <div class="reveal" style="margin-top:16px">
+        <button class="btn btn-outline" id="toggleWatchlistBtn" onclick="toggleWatchlist()" style="gap:6px;font-size:12px;padding:8px 20px;">
+          <span id="toggleIcon">▾</span> <span id="toggleText">HIDE TABLE</span>
+        </button>
+      </div>
     </div>
     <div class="reveal" id="watchlistTableWrapper">
       <div class="table-wrap" id="fullWatchlistTable"></div>
-      <p class="caption" style="margin-top:10px;text-align:center">DATA SOURCE: PUBLIC QUARTERLY REPORTS. LAST UPDATED MANUALLY.</p>
+      <p class="caption" style="margin-top:8px;text-align:center">DATA SOURCE: PUBLIC QUARTERLY REPORTS. LAST UPDATED MANUALLY.</p>
     </div>
   </div>
 </section>
 
-<!-- GUIDE -->
-<section class="section" id="guide">
+<!-- CALCULATOR (compact, fixed glitch) -->
+<section class="section" id="calculator">
   <div class="section-inner">
-    <div style="text-align:center;margin-bottom:48px"><p class="eyebrow reveal">HOW TO VERIFY</p><h2 class="headline reveal">YOUR PERSONAL<br><span class="headline-accent">SHARIAH</span> AUDIT.</h2></div>
-    <div class="card-grid reveal">
-      <div class="card"><div class="card-icon">🔍</div><div class="card-title">SCREENER.IN</div><div class="card-text">Search stock → Profit & Loss → check Other Income. Balance Sheet → Debt/Assets.</div></div>
-      <div class="card"><div class="card-icon">📋</div><div class="card-title">MONEYCONTROL</div><div class="card-text">Financials → look for Finance Costs and Interest Earned.</div></div>
-      <div class="card"><div class="card-icon">🕌</div><div class="card-title">CONSULT SCHOLARS</div><div class="card-text">After screening, seek personalized guidance from a qualified Islamic scholar.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- WIZARD -->
-<section class="section" id="wizard">
-  <div class="section-inner" style="text-align:center">
-    <p class="eyebrow reveal">INTERACTIVE SCREENING WIZARD</p>
-    <h2 class="headline reveal">TEST A STOCK<br><span class="headline-accent">YOURSELF.</span></h2>
-    <div class="wizard-wrap reveal" style="margin-top:36px">
-      <div class="wizard-card" id="wizardCard">
-        <div class="wizard-step active" id="step1">
-          <p class="card-title" style="margin-bottom:6px">STEP 1: INTEREST INCOME</p>
-          <p class="card-text">What percentage of total revenue comes from interest?</p>
-          <input type="number" class="wizard-input" id="interestInput" placeholder="e.g. 1.5" step="0.1" min="0"/>
-          <div class="wizard-feedback" id="interestFeedback"></div>
-          <button class="btn btn-primary" style="margin-top:18px" onclick="nextWizardStep()">NEXT →</button>
-        </div>
-        <div class="wizard-step" id="step2">
-          <p class="card-title" style="margin-bottom:6px">STEP 2: DEBT RATIO</p>
-          <p class="card-text">What is the total debt as a percentage of total assets?</p>
-          <input type="number" class="wizard-input" id="debtInput" placeholder="e.g. 25" step="0.1" min="0"/>
-          <div class="wizard-feedback" id="debtFeedback"></div>
-          <button class="btn btn-primary" style="margin-top:18px" onclick="nextWizardStep()">NEXT →</button>
-        </div>
-        <div class="wizard-step" id="step3">
-          <p class="card-title" style="margin-bottom:6px">STEP 3: ILLIQUID ASSETS</p>
-          <p class="card-text">What percentage of total assets are illiquid?</p>
-          <input type="number" class="wizard-input" id="liquidInput" placeholder="e.g. 45" step="0.1" min="0"/>
-          <div class="wizard-feedback" id="liquidFeedback"></div>
-          <button class="btn btn-primary" style="margin-top:18px" onclick="showWizardResult()">SHOW VERDICT</button>
-        </div>
-        <div class="wizard-result" id="wizardResult"></div>
-        <button id="resetWizardBtn" style="display:none;margin-top:20px" class="btn btn-outline" onclick="resetWizard()">START OVER</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CALCULATOR -->
-<section class="section" id="tools">
-  <div class="section-inner">
-    <div style="text-align:center;margin-bottom:48px"><p class="eyebrow reveal">TOOLS</p><h2 class="headline reveal">GROWTH &<br><span class="headline-accent">PURIFICATION</span><br>CALCULATOR.</h2></div>
+    <div style="text-align:center;margin-bottom:28px"><p class="eyebrow reveal">CALCULATOR</p><h2 class="headline reveal" style="font-size:clamp(28px,5vw,42px)">GROWTH &<br><span class="headline-accent">PURIFICATION</span></h2></div>
     <div class="calc-grid reveal">
       <div class="calc-form">
-        <div class="card-title" style="margin-bottom:24px">GROWTH CALCULATOR</div>
+        <div class="feature-title" style="margin-bottom:20px">GROWTH CALCULATOR</div>
         <div class="calc-group"><label class="calc-label">MONTHLY INVESTMENT</label><span class="calc-value" id="invVal">₹5,000</span><input type="range" min="500" max="50000" step="500" value="5000" id="invRange" oninput="updateCalc()"/></div>
         <div class="calc-group"><label class="calc-label">TIME HORIZON</label><span class="calc-value" id="yrsVal">10 YEARS</span><input type="range" min="1" max="30" step="1" value="10" id="yrsRange" oninput="updateCalc()"/></div>
         <div class="calc-group"><label class="calc-label">EXPECTED RETURN</label><span class="calc-value" id="retVal">12%</span><input type="range" min="6" max="20" step="0.5" value="12" id="retRange" oninput="updateCalc()"/></div>
@@ -475,7 +405,7 @@ input[type=range]::-moz-range-thumb{
 <!-- FLASHCARDS -->
 <section class="section" id="learn">
   <div class="section-inner"><div class="flashcard-wrap">
-    <div style="text-align:center;margin-bottom:36px"><p class="eyebrow reveal">KNOWLEDGE</p><h2 class="headline reveal">20 ESSENTIAL<br><span class="headline-accent">CONCEPTS.</span></h2></div>
+    <div style="text-align:center;margin-bottom:28px"><p class="eyebrow reveal">KNOWLEDGE</p><h2 class="headline reveal" style="font-size:clamp(28px,5vw,42px)">20 ESSENTIAL<br><span class="headline-accent">CONCEPTS.</span></h2></div>
     <p class="flashcard-counter reveal" id="fcCounter" style="font-size:13px;font-weight:500;color:var(--text-tertiary)">QUESTION 1 OF 20</p>
     <div class="flashcard reveal" id="flashcard" onclick="flipCard()"><div class="flashcard-inner"><div class="flashcard-face flashcard-front"><p class="f-tag">TAP TO REVEAL</p><p class="f-q" id="fcQ"></p></div><div class="flashcard-face flashcard-back"><p class="f-a" id="fcA"></p></div></div></div>
     <div class="flashcard-nav reveal"><button onclick="prevCard()">← PREV</button><button onclick="nextCard()">NEXT →</button></div>
@@ -493,15 +423,15 @@ input[type=range]::-moz-range-thumb{
 <section class="disclaimer-section reveal">
   <p style="font-weight:600;color:var(--text-primary);margin-bottom:6px;text-transform:uppercase">IMPORTANT DISCLAIMER</p>
   <p class="disclaimer-text">Ethical Invest is a purely educational platform. We do not provide financial advice or fatwas. Always do your own research or consult a qualified advisor.</p>
-  <p class="disclaimer-text" style="margin-top:10px">Proudly made in India. Serving Muslims in India and around the world.</p>
+  <p class="disclaimer-text" style="margin-top:8px">Proudly made in India. Serving Muslims in India and around the world.</p>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand"><h4>ETHICAL INVEST</h4><p>Shariah‑compliant wealth education. Knowledge first, faith always.</p></div>
-    <div class="footer-col"><h6>RESOURCES</h6><a href="#features">FEATURES</a><a href="#platforms">PLATFORMS</a><a href="#screener">SCREENER</a><a href="#watchlist">WATCHLIST</a></div>
-    <div class="footer-col"><h6>LEGAL</h6><a href="#disclaimer">DISCLAIMER</a><a href="#disclaimer">NOT FINANCIAL ADVICE</a></div>
+    <div class="footer-col"><h6>RESOURCES</h6><a href="#features">FEATURES</a><a href="#tools">TOOLS</a><a href="#screener">SCREENER</a><a href="#watchlist">WATCHLIST</a></div>
+    <div class="footer-col"><h6>LEGAL</h6><a href="#">DISCLAIMER</a><a href="#">EDUCATIONAL ONLY</a></div>
   </div>
   <div class="footer-bottom"><span>ETHICAL INVESTING — AAOIFI STANDARDS</span><span>VERIFY ALL DATA BEFORE INVESTING</span></div>
 </footer>
@@ -509,7 +439,7 @@ input[type=range]::-moz-range-thumb{
 <!-- CHATBOT -->
 <button class="chatbot-toggle" onclick="document.getElementById('chatbotWindow').classList.toggle('open')">💬</button>
 <div class="chatbot-window" id="chatbotWindow">
-  <div class="chatbot-header"><span>ETHICAL INVEST ASSISTANT</span><button style="background:none;border:none;color:#FFF;font-size:16px;cursor:pointer" onclick="document.getElementById('chatbotWindow').classList.remove('open')">✕</button></div>
+  <div class="chatbot-header"><span>ETHICAL INVEST ASSISTANT</span><button style="background:none;border:none;color:#FFF;font-size:14px;cursor:pointer" onclick="document.getElementById('chatbotWindow').classList.remove('open')">✕</button></div>
   <div class="chatbot-body" id="chatbotBody"><div class="chatbot-msg bot">Assalamu alaikum! Ask me about halal investing, screening, purification, Zakat, or our tools. <strong>I am not a scholar — consult one for religious rulings.</strong></div></div>
   <div class="chatbot-input-row"><input type="text" id="chatbotInput" placeholder="Type your question..." onkeypress="if(event.key==='Enter')sendChat()"/><button onclick="sendChat()">SEND</button></div>
 </div>
@@ -523,61 +453,6 @@ function toggleMobile(){
 function closeMobile(){
   document.getElementById('mobileMenu').classList.remove('open');
   document.getElementById('hamburgerBtn').classList.remove('open');
-}
-
-// ── WIZARD ──
-let wizardStep=1;
-function nextWizardStep(){
-  const interest=parseFloat(document.getElementById('interestInput').value);
-  const debt=parseFloat(document.getElementById('debtInput').value);
-  if(wizardStep===1){
-    if(isNaN(interest)||interest<0){alert('Enter valid interest %');return}
-    const pass=interest<5;
-    document.getElementById('interestFeedback').textContent=pass?'✓ Interest <5% (PASS)':'✗ Interest >5% (FAIL)';
-    document.getElementById('interestFeedback').className='wizard-feedback '+(pass?'pass':'fail');
-    document.getElementById('step1').classList.remove('active');
-    document.getElementById('step2').classList.add('active');
-    wizardStep=2;
-  }else if(wizardStep===2){
-    if(isNaN(debt)||debt<0){alert('Enter valid debt %');return}
-    const pass=debt<33;
-    document.getElementById('debtFeedback').textContent=pass?'✓ Debt <33% (PASS)':'✗ Debt >33% (FAIL)';
-    document.getElementById('debtFeedback').className='wizard-feedback '+(pass?'pass':'fail');
-    document.getElementById('step2').classList.remove('active');
-    document.getElementById('step3').classList.add('active');
-    wizardStep=3;
-  }
-}
-function showWizardResult(){
-  const liquid=parseFloat(document.getElementById('liquidInput').value);
-  if(isNaN(liquid)||liquid<0){alert('Enter valid illiquid %');return}
-  const pass=liquid>33;
-  document.getElementById('liquidFeedback').textContent=pass?'✓ Illiquid >33% (PASS)':'✗ Illiquid <33% (FAIL)';
-  document.getElementById('liquidFeedback').className='wizard-feedback '+(pass?'pass':'fail');
-  document.getElementById('step3').classList.remove('active');
-  const iP=parseFloat(document.getElementById('interestInput').value)<5;
-  const dP=parseFloat(document.getElementById('debtInput').value)<33;
-  const allPass=iP&&dP&&pass;
-  const rd=document.getElementById('wizardResult');
-  rd.style.display='block';
-  if(allPass){rd.className='wizard-result halal';rd.innerHTML='<p class="card-title" style="color:#2E7D32">✓ LIKELY HALAL</p><p class="card-text">Passes basic AAOIFI screens. Also check business activity and consult a scholar.</p>'}
-  else if(!iP&&!dP&&!pass){rd.className='wizard-result haram';rd.innerHTML='<p class="card-title" style="color:#C62828">✗ LIKELY HARAM</p><p class="card-text">Fails multiple screens. Avoid unless verified otherwise.</p>'}
-  else{rd.className='wizard-result caution';rd.innerHTML='<p class="card-title" style="color:#E65100">⚠ CAUTION REQUIRED</p><p class="card-text">Partially passes. Verify business activity and consult a scholar.</p>'}
-  document.getElementById('resetWizardBtn').style.display='block';
-}
-function resetWizard(){
-  document.getElementById('step1').classList.add('active');
-  document.getElementById('step2').classList.remove('active');
-  document.getElementById('step3').classList.remove('active');
-  document.getElementById('interestInput').value='';
-  document.getElementById('debtInput').value='';
-  document.getElementById('liquidInput').value='';
-  document.getElementById('interestFeedback').textContent='';
-  document.getElementById('debtFeedback').textContent='';
-  document.getElementById('liquidFeedback').textContent='';
-  document.getElementById('wizardResult').style.display='none';
-  document.getElementById('resetWizardBtn').style.display='none';
-  wizardStep=1;
 }
 
 // ── WATCHLIST TOGGLE ──
@@ -652,19 +527,19 @@ function runScreener(){const s=document.getElementById('stockInput').value.trim(
 function quickScreen(s){document.getElementById('stockInput').value=s;showResult(s)}
 function showResult(sym){
   const el=document.getElementById('screenerResult'),d=stocksDatabase[sym];
-  if(!d){el.style.display='block';el.innerHTML='<div class="card" style="text-align:center;color:var(--text-secondary)">No data for that symbol. Try TCS, INFY, etc.</div>';return}
+  if(!d){el.style.display='block';el.innerHTML='<div class="card" style="text-align:center;padding:20px;color:var(--text-secondary)">No data for that symbol.</div>';return}
   const st={halal:{l:'✓ HALAL',c:'#2E7D32'},haram:{l:'✗ HARAM',c:'#C62828'},caution:{l:'⚠ CAUTION',c:'#E65100'}}[d.status];
   el.style.display='block';
-  el.innerHTML=`<div class="card" style="text-align:left;padding:24px">
+  el.innerHTML=`<div class="feature-card" style="text-align:left">
     <p style="font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase">${sym} · ${d.sector}</p>
-    <p style="font-size:22px;font-weight:700;margin:4px 0">${d.name}</p>
-    <span style="display:inline-block;color:${st.c};padding:4px 12px;border-radius:980px;font-size:10px;font-weight:700;margin:8px 0 14px;background:rgba(${d.status==='halal'?'46,125,50':d.status==='haram'?'198,40,40':'230,81,0'},0.06)">${st.l}</span>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
-      <div style="background:rgba(190,183,164,0.08);border-radius:10px;padding:12px;text-align:center"><div style="font-size:22px;font-weight:800;color:#BEB7A4">${d.interest}%</div><div style="font-size:9px;color:var(--text-tertiary)">INTEREST</div></div>
-      <div style="background:rgba(190,183,164,0.08);border-radius:10px;padding:12px;text-align:center"><div style="font-size:22px;font-weight:800;color:#BEB7A4">${d.debt}%</div><div style="font-size:9px;color:var(--text-tertiary)">DEBT</div></div>
-      <div style="background:rgba(190,183,164,0.08);border-radius:10px;padding:12px;text-align:center"><div style="font-size:22px;font-weight:800;color:#BEB7A4">${d.liquid}%</div><div style="font-size:9px;color:var(--text-tertiary)">ILLIQUID</div></div>
+    <p style="font-size:20px;font-weight:700;margin:4px 0">${d.name}</p>
+    <span style="display:inline-block;color:${st.c};padding:3px 10px;border-radius:980px;font-size:10px;font-weight:700;margin:6px 0 12px;background:rgba(${d.status==='halal'?'46,125,50':d.status==='haram'?'198,40,40':'230,81,0'},0.06)">${st.l}</span>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+      <div style="background:rgba(190,183,164,0.08);border-radius:8px;padding:10px;text-align:center"><div style="font-size:20px;font-weight:800;color:#BEB7A4">${d.interest}%</div><div style="font-size:9px;color:var(--text-tertiary)">INTEREST</div></div>
+      <div style="background:rgba(190,183,164,0.08);border-radius:8px;padding:10px;text-align:center"><div style="font-size:20px;font-weight:800;color:#BEB7A4">${d.debt}%</div><div style="font-size:9px;color:var(--text-tertiary)">DEBT</div></div>
+      <div style="background:rgba(190,183,164,0.08);border-radius:8px;padding:10px;text-align:center"><div style="font-size:20px;font-weight:800;color:#BEB7A4">${d.liquid}%</div><div style="font-size:9px;color:var(--text-tertiary)">ILLIQUID</div></div>
     </div>
-    <p style="font-size:10px;color:#C62828;margin-top:12px">⚠ EDUCATIONAL DATA. VERIFY ON SCREENER.IN</p>
+    <p style="font-size:10px;color:#C62828;margin-top:10px">⚠ EDUCATIONAL DATA. VERIFY ON SCREENER.IN</p>
   </div>`;
   el.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
@@ -680,13 +555,13 @@ function buildFullWatchlist(){
 }
 buildFullWatchlist();
 
-// Calculator
+// Calculator with fixed decimal
 function fmt(n){return'₹'+Math.round(n).toLocaleString('en-IN')}
 function updateCalc(){
   const m=+document.getElementById('invRange').value,y=+document.getElementById('yrsRange').value,r=+document.getElementById('retRange').value/100;
   document.getElementById('invVal').textContent=fmt(m);
   document.getElementById('yrsVal').textContent=y+' YEAR'+(y>1?'S':'');
-  document.getElementById('retVal').textContent=(r*100)+'%';
+  document.getElementById('retVal').textContent=(r*100).toFixed(1)+'%';
   const n=y*12,mr=r/12;
   const fv=m*((Math.pow(1+mr,n)-1)/mr)*(1+mr);
   const inv=m*n,ret=fv-inv,z=fv*0.025,net=fv-z;
