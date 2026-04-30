@@ -14,7 +14,7 @@
   --text-primary: #1D1D1F;
   --text-secondary: #6E6E73;
   --accent-coffee: #3C2A21;
-  --accent-light: #BEB7A4;
+  --accent-light: #6B4C3B;
   --accent-gradient: linear-gradient(135deg, #3C2A21 0%, #6B4C3B 100%);
   --border: rgba(0,0,0,0.06);
   --border-strong: rgba(0,0,0,0.1);
@@ -42,6 +42,9 @@ a{text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}
 button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
 ul{list-style:none}
 
+::-webkit-scrollbar{width:6px;background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.12);border-radius:3px}
+
 /* NAV */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:9999;height:var(--nav-height);
@@ -51,11 +54,12 @@ ul{list-style:none}
 }
 .nav-inner{max-width:1024px;width:100%;display:flex;align-items:center;justify-content:space-between;padding:0 22px;}
 .nav-logo{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em;}
+.nav-logo svg{width:28px;height:28px}
 .nav-links{display:flex;gap:28px;}
 .nav-links a{font-size:12px;font-weight:500;color:var(--text-secondary);letter-spacing:-0.01em;transition:color 0.2s;}
 .nav-links a:hover{color:var(--text-primary)}
 .nav-cta{background:var(--accent-coffee);color:#FFF;padding:8px 18px;border-radius:var(--radius-pill);font-size:12px;font-weight:600;transition:all var(--transition-fast);}
-.nav-cta:hover{background:#2C1D14;transform:scale(1.04)}
+.nav-cta:hover{background:var(--accent-light);transform:scale(1.04)}
 .hamburger{display:none;background:none;border:none;padding:8px;cursor:pointer;}
 .hamburger span{display:block;width:18px;height:1.5px;background:var(--text-primary);margin:4px 0;transition:0.3s;border-radius:1px;}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
@@ -89,7 +93,7 @@ ul{list-style:none}
 /* BUTTONS */
 .btn{display:inline-flex;align-items:center;gap:6px;padding:12px 24px;border-radius:var(--radius-pill);font-size:13px;font-weight:600;letter-spacing:-0.01em;border:none;cursor:pointer;transition:all var(--transition-fast);text-transform:uppercase;}
 .btn-primary{background:var(--accent-coffee);color:#FFF;}
-.btn-primary:hover{background:#2C1D14;transform:scale(1.03)}
+.btn-primary:hover{background:var(--accent-light);transform:scale(1.03)}
 .btn-outline{background:transparent;color:var(--accent-coffee);border:1px solid var(--accent-coffee);}
 .btn-outline:hover{background:rgba(60,42,33,0.04);transform:scale(1.03)}
 
@@ -101,16 +105,10 @@ ul{list-style:none}
 .percentage-bar{height:8px;background:#F5F5F7;border-radius:4px;margin:8px 0 12px;overflow:hidden;}
 .percentage-fill{height:100%;border-radius:4px;background:var(--accent-gradient);}
 
-/* SCREENER RESULT CARD */
+/* SCREENER RESULT */
 .compliance-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
 .summary-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-primary);}
 .summary-item.checked::before{content:'✓';color:#2E7D32;font-weight:700;}
-
-/* PURIFICATION / ZAKAT CALCULATOR */
-.calc-row{display:flex;justify-content:space-between;align-items:flex-end;padding:10px 0;border-bottom:1px solid var(--border);}
-.calc-row:last-child{border-bottom:none}
-.calc-label{font-size:13px;color:var(--text-secondary);}
-.calc-value{font-size:16px;font-weight:700;color:var(--text-primary);}
 
 /* WATCHLIST */
 .watchlist-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
@@ -127,12 +125,90 @@ ul{list-style:none}
 .verse-text{font-size:16px;font-weight:400;color:var(--accent-coffee);line-height:1.7;font-style:italic;}
 .verse-source{font-size:12px;font-weight:600;color:var(--text-secondary);margin-top:8px;text-transform:uppercase;}
 
+/* TABLE (collapsible watchlist) */
+.table-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border);margin-top:20px;}
+.data-table{width:100%;border-collapse:collapse;font-size:13px;min-width:600px;}
+.data-table thead th{background:var(--bg-body);padding:12px 16px;font-size:10px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.1em;text-align:left;position:sticky;top:0;}
+.data-table tbody td{padding:12px 16px;border-bottom:1px solid var(--border);font-weight:500;}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:var(--radius-pill);font-size:10px;font-weight:700;}
+.badge-halal{background:rgba(46,125,50,0.08);color:#2E7D32;}
+.badge-caution{background:rgba(230,81,0,0.08);color:#E65100;}
+.badge-haram{background:rgba(198,40,40,0.08);color:#C62828;}
+
+/* CALCULATOR (growth) */
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
+@media(max-width:768px){.calc-grid{grid-template-columns:1fr}}
+.calc-form{background:var(--bg-card);border-radius:var(--radius-lg);padding:28px;border:1px solid var(--border)}
+.calc-result{background:var(--accent-coffee);border-radius:var(--radius-lg);padding:28px;color:#FFF}
+.calc-group{margin-bottom:20px}
+.calc-label{font-size:10px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;display:block}
+.calc-value{font-size:32px;font-weight:800;color:var(--text-primary);letter-spacing:-0.04em;display:block;margin-bottom:6px}
+input[type=range]{width:100%;height:4px;accent-color:var(--accent-coffee);-webkit-appearance:none;background:var(--accent-coffee);border-radius:2px;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent-coffee);border:2px solid #FFFFFF;box-shadow:0 2px 6px rgba(0,0,0,0.15);cursor:pointer;}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--accent-coffee);border:2px solid #FFFFFF;box-shadow:0 2px 6px rgba(0,0,0,0.15);cursor:pointer;}
+.calc-row{display:flex;justify-content:space-between;align-items:flex-end;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.1)}
+.calc-row:last-child{border-bottom:none}
+.calc-row-label{font-size:12px;font-weight:500;color:rgba(255,255,255,0.6)}
+.calc-row-value{font-size:18px;font-weight:700;color:#FFF;letter-spacing:-0.02em}
+.calc-row-value.lg{font-size:26px}
+.calc-row-value.accent{color:#D4C9B0}
+
+/* FLASHCARDS */
+.flashcard-wrap{max-width:480px;margin:0 auto;text-align:center}
+.flashcard{perspective:1000px;height:230px;cursor:pointer;margin-bottom:16px}
+.flashcard-inner{position:relative;width:100%;height:100%;transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);transform-style:preserve-3d}
+.flashcard.flipped .flashcard-inner{transform:rotateY(180deg)}
+.flashcard-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center}
+.flashcard-front{background:var(--bg-card);border:1px solid var(--border)}
+.flashcard-front .f-tag{font-size:10px;font-weight:700;color:var(--accent-coffee);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:12px}
+.flashcard-front .f-q{font-size:22px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em;line-height:1.3}
+.flashcard-back{background:var(--accent-coffee);transform:rotateY(180deg);color:#FFF}
+.flashcard-back .f-a{font-size:14px;font-weight:400;line-height:1.6}
+.flashcard-nav{display:flex;gap:8px;justify-content:center;margin-top:8px}
+.flashcard-nav button{background:var(--bg-card);color:var(--accent-coffee);padding:8px 20px;border-radius:var(--radius-pill);font-size:12px;font-weight:600;border:1px solid var(--border);cursor:pointer;transition:all var(--transition-fast)}
+.flashcard-nav button:hover{background:var(--accent-coffee);color:#FFF;border-color:var(--accent-coffee)}
+.flashcard-dots{display:flex;gap:5px;justify-content:center;margin-top:10px}
+.f-dot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:all 0.3s}
+.f-dot.active{background:var(--accent-coffee);width:18px;border-radius:3px}
+
+/* WIZARD */
+.wizard-wrap{max-width:560px;margin:0 auto}
+.wizard-card{background:var(--bg-card);border-radius:24px;padding:32px;text-align:center;border:1px solid var(--border);}
+.wizard-step{display:none}
+.wizard-step.active{display:block}
+.wizard-input{width:100%;padding:12px 16px;border:1px solid var(--border-strong);border-radius:10px;font-size:15px;font-family:Inter;margin-top:12px;outline:none}
+.wizard-input:focus{border-color:var(--accent-coffee)}
+.wizard-feedback{font-size:13px;margin-top:8px;font-weight:600;min-height:20px}
+.wizard-feedback.pass{color:#2E7D32}
+.wizard-feedback.fail{color:#C62828}
+.wizard-result{display:none;margin-top:16px;padding:16px;border-radius:12px}
+.wizard-result.halal{background:rgba(46,125,50,0.04);border:1px solid rgba(46,125,50,0.15)}
+.wizard-result.haram{background:rgba(198,40,40,0.04);border:1px solid rgba(198,40,40,0.15)}
+.wizard-result.caution{background:rgba(230,81,0,0.04);border:1px solid rgba(230,81,0,0.15)}
+
+/* CHATBOT */
+.chatbot-toggle{position:fixed;bottom:20px;right:20px;z-index:10001;width:48px;height:48px;border-radius:50%;background:var(--accent-coffee);color:#FFF;border:none;font-size:20px;box-shadow:0 4px 20px rgba(0,0,0,0.1);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:0.3s}
+.chatbot-toggle:hover{background:var(--accent-light);transform:scale(1.05)}
+.chatbot-window{display:none;position:fixed;bottom:80px;right:20px;z-index:10002;width:320px;max-width:90vw;height:420px;max-height:60vh;background:var(--bg-card);border-radius:var(--radius-lg);box-shadow:0 10px 40px rgba(0,0,0,0.15);flex-direction:column;overflow:hidden;border:1px solid var(--border)}
+.chatbot-window.open{display:flex}
+.chatbot-header{background:var(--accent-coffee);color:#FFF;padding:12px 16px;font-weight:600;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.chatbot-body{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.chatbot-msg{max-width:85%;padding:10px 12px;border-radius:14px;font-size:13px;line-height:1.5;word-wrap:break-word}
+.chatbot-msg.bot{background:rgba(60,42,33,0.06);align-self:flex-start}
+.chatbot-msg.user{background:var(--accent-coffee);color:#FFF;align-self:flex-end}
+.chatbot-input-row{display:flex;border-top:1px solid var(--border);padding:8px}
+.chatbot-input-row input{flex:1;border:none;padding:10px;font-size:13px;outline:none;font-family:Inter;background:var(--bg-card)}
+.chatbot-input-row button{background:var(--accent-coffee);color:#FFF;border:none;padding:8px 14px;border-radius:var(--radius-pill);font-weight:600;cursor:pointer;font-size:12px}
+
 /* FOOTER */
 .footer{background:var(--accent-coffee);color:rgba(255,255,255,0.7);padding:48px 22px 28px;font-size:12px;}
 .footer-inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.1);}
 .footer-bottom{max-width:980px;margin:16px auto 0;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.4);}
-
 @media(max-width:768px){.footer-inner{grid-template-columns:1fr;gap:24px}}
+
+/* MISC */
+.pill{background:rgba(60,42,33,0.05);padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;transition:0.2s;display:inline-block;margin:4px;}
+.pill:hover{background:rgba(60,42,33,0.1);}
 </style>
 </head>
 <body>
@@ -140,8 +216,10 @@ ul{list-style:none}
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#screener" onclick="closeMobile()">SCREENER</a>
+  <a href="#features" onclick="closeMobile()">FEATURES</a>
   <a href="#calculator" onclick="closeMobile()">CALCULATORS</a>
   <a href="#watchlist" onclick="closeMobile()">WATCHLIST</a>
+  <a href="#learn" onclick="closeMobile()">LEARN</a>
   <a href="#community" onclick="closeMobile()">COMMUNITY</a>
   <button class="nav-cta" onclick="closeMobile();document.getElementById('screener').scrollIntoView({behavior:'smooth'})">SCREEN A STOCK</button>
 </div>
@@ -150,18 +228,15 @@ ul{list-style:none}
 <nav class="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo">
-      <!-- Premium Logo: Monogram + Wordmark -->
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <circle cx="14" cy="14" r="12" stroke="#3C2A21" stroke-width="2.5"/>
-        <path d="M10 14l3 3 5-6" stroke="#3C2A21" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#3C2A21" stroke-width="2.5"/><path d="M10 14l3 3 5-6" stroke="#3C2A21" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>ENVESTMENT</span>
     </a>
     <ul class="nav-links">
       <li><a href="#screener">SCREENER</a></li>
-      <li><a href="#calculator">CALCULATORS</a></li>
+      <li><a href="#features">FEATURES</a></li>
+      <li><a href="#calculator">TOOLS</a></li>
       <li><a href="#watchlist">WATCHLIST</a></li>
-      <li><a href="#community">COMMUNITY</a></li>
+      <li><a href="#learn">LEARN</a></li>
     </ul>
     <a href="#screener" class="nav-cta">SCREEN A STOCK</a>
     <button class="hamburger" id="hamburgerBtn" onclick="toggleMobile()"><span></span><span></span><span></span></button>
@@ -172,16 +247,19 @@ ul{list-style:none}
 <section class="section" style="padding-top:120px">
   <div class="section-inner" style="text-align:center">
     <h1 class="headline">YOUR JOURNEY<br>TO <span class="headline-accent">HALAL WEALTH</span><br>STARTS HERE.</h1>
-    <p class="subhead" style="margin-top:20px">ENVESTMENT — Ethical Investment, Shariah‑Compliant</p>
-    <!-- Quranic Verse -->
+    <p class="subhead">ENVESTMENT — Ethical Investment, Shariah‑Compliant</p>
     <div class="verse-box">
       <p class="verse-text">“And do not consume one another's wealth unjustly or send it [in bribery] to the rulers in order that [they might aid] you [to] consume a portion of the wealth of the people in sin, while you know [it is unlawful].”</p>
       <p class="verse-source">— Surah Al‑Baqarah (2:188)</p>
     </div>
+    <div style="margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="#screener" class="btn btn-primary">SCREEN A STOCK</a>
+      <a href="#features" class="btn btn-outline">EXPLORE FEATURES</a>
+    </div>
   </div>
 </section>
 
-<!-- STOCK SCREENING RESULT CARD -->
+<!-- STOCK SCREENER (with result card) -->
 <section class="section" id="screener">
   <div class="section-inner">
     <div style="text-align:center;margin-bottom:32px">
@@ -197,68 +275,164 @@ ul{list-style:none}
   </div>
 </section>
 
-<!-- CALCULATORS SECTION -->
-<section class="section" id="calculator" style="background:#F5F5F7">
+<!-- FEATURES (Halal vs Haram + Investment Options) -->
+<section class="section" id="features">
   <div class="section-inner">
     <div style="text-align:center;margin-bottom:32px">
-      <p class="eyebrow">EVERYTHING YOU NEED</p>
-      <h2 class="headline" style="font-size:clamp(28px,5vw,42px)">TO INVEST <span class="headline-accent">HALAL.</span></h2>
+      <p class="eyebrow">UNDERSTAND THE DIFFERENCE</p>
+      <h2 class="headline" style="font-size:clamp(28px,5vw,42px)">WHAT'S <span class="headline-accent">PERMISSIBLE.</span></h2>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
-      <!-- Purification Calculator -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">PURIFICATION CALCULATOR</div>
-          <span class="card-subtitle">💧</span>
-        </div>
-        <p class="card-subtitle" style="margin-bottom:16px">Calculate and purify non‑permissible earnings.</p>
-        <div class="calc-row"><span class="calc-label">Total Purifiable Amount</span><span class="calc-value">₹2,345</span></div>
-        <div class="calc-row"><span class="calc-label">Interest Income</span><span class="calc-value">₹1,450</span></div>
-        <div class="calc-row"><span class="calc-label">Other Non‑permissible</span><span class="calc-value">₹895</span></div>
-        <button class="btn btn-outline" style="margin-top:16px;width:100%;">CALCULATE PURIFICATION</button>
-      </div>
-      <!-- Zakat Calculator -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">ZAKAT CALCULATOR</div>
-          <span class="card-subtitle">💰</span>
-        </div>
-        <p class="card-subtitle" style="margin-bottom:16px">Calculate based on the full yield of zakats.</p>
-        <div class="calc-row"><span class="calc-label">Total Zakat Payable</span><span class="calc-value">₹18,765</span></div>
-        <div class="calc-row"><span class="calc-label">Net Wealth</span><span class="calc-value">₹7,50,600</span></div>
-        <div class="calc-row"><span class="calc-label">Zakat Rate</span><span class="calc-value">2.5%</span></div>
-        <button class="btn btn-outline" style="margin-top:16px;width:100%;">CALCULATE ZAKAT</button>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:800px;margin:0 auto">
+      <div class="card"><div class="card-header"><div class="card-title" style="color:#C62828">HARAM</div></div><ul style="list-style:none;display:flex;flex-direction:column;gap:8px"><li>Riba (interest) from savings/FD</li><li>Conventional bonds</li><li>Alcohol, gambling, pork stocks</li><li>High interest income (>5%)</li><li>Excessive debt (>33%)</li></ul></div>
+      <div class="card"><div class="card-header"><div class="card-title" style="color:#2E7D32">HALAL</div></div><ul style="list-style:none;display:flex;flex-direction:column;gap:8px"><li>Shariah‑compliant MFs</li><li>Screened equities</li><li>Physical gold & ETFs</li><li>Halal REITs</li><li>Sukuk (Islamic bonds)</li></ul></div>
+    </div>
+    <div style="margin-top:40px;text-align:center">
+      <h3 class="card-title">VERIFIED HALAL WAYS TO GROW WEALTH</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:24px">
+        <div class="card"><strong>📊 Shariah Mutual Funds</strong><p style="font-size:13px;color:var(--text-secondary)">Tata Ethical, Taurus Ethical — SIP from ₹500</p></div>
+        <div class="card"><strong>📈 Screened Stocks</strong><p style="font-size:13px;color:var(--text-secondary)">Pass the 4‑step AAOIFI test</p></div>
+        <div class="card"><strong>🥇 Physical Gold & ETF</strong><p style="font-size:13px;color:var(--text-secondary)">Avoid SGB (interest)</p></div>
+        <div class="card"><strong>🏙️ Halal REITs</strong><p style="font-size:13px;color:var(--text-secondary)">Screen tenants & debt</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WATCHLIST -->
+<!-- PLATFORMS (Groww/Zerodha) -->
+<section class="section" style="background:#F5F5F7">
+  <div class="section-inner">
+    <h2 class="headline" style="font-size:clamp(28px,5vw,42px)">TRUSTED <span class="headline-accent">PLATFORMS.</span></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;max-width:800px;margin-left:auto;margin-right:auto">
+      <div class="card">
+        <div class="card-header"><div class="card-title">GROWW</div></div>
+        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">Beginner‑friendly. Access Shariah funds.</p>
+        <ul style="list-style:none;font-size:13px;color:var(--text-primary);margin-bottom:16px"><li>Free account opening</li><li>Zero commission on MFs</li></ul>
+        <a href="https://groww.in" target="_blank" class="btn btn-outline" style="font-size:12px">VISIT GROWW ↗</a>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">ZERODHA</div></div>
+        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">Advanced tools, Coin for MFs, Smallcase.</p>
+        <ul style="list-style:none;font-size:13px;color:var(--text-primary);margin-bottom:16px"><li>₹200 account opening</li><li>Curated halal baskets</li></ul>
+        <a href="https://zerodha.com" target="_blank" class="btn btn-outline" style="font-size:12px">VISIT ZERODHA ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATORS (Purification & Zakat + Growth) -->
+<section class="section" id="calculator">
+  <div class="section-inner">
+    <h2 class="headline" style="font-size:clamp(28px,5vw,42px);margin-bottom:24px"><span class="headline-accent">CALCULATORS.</span></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:800px;margin:0 auto 40px">
+      <!-- Purification -->
+      <div class="card">
+        <div class="card-header"><div class="card-title">PURIFICATION</div></div>
+        <div class="calc-row"><span class="calc-label">Total Purifiable</span><span class="calc-value" style="color:var(--text-primary);font-size:18px">₹2,345</span></div>
+        <div class="calc-row"><span class="calc-label">Interest Income</span><span>₹1,450</span></div>
+        <div class="calc-row"><span class="calc-label">Other</span><span>₹895</span></div>
+        <button class="btn btn-outline" style="margin-top:16px;width:100%">CALCULATE PURIFICATION</button>
+      </div>
+      <!-- Zakat -->
+      <div class="card">
+        <div class="card-header"><div class="card-title">ZAKAT</div></div>
+        <div class="calc-row"><span class="calc-label">Total Zakat Payable</span><span class="calc-value" style="color:var(--text-primary);font-size:18px">₹18,765</span></div>
+        <div class="calc-row"><span class="calc-label">Net Wealth</span><span>₹7,50,600</span></div>
+        <div class="calc-row"><span class="calc-label">Zakat Rate</span><span>2.5%</span></div>
+        <button class="btn btn-outline" style="margin-top:16px;width:100%">CALCULATE ZAKAT</button>
+      </div>
+    </div>
+    <!-- Growth Calculator -->
+    <div class="calc-grid" style="max-width:800px;margin:0 auto">
+      <div class="calc-form">
+        <div class="card-title" style="margin-bottom:20px">GROWTH CALCULATOR</div>
+        <div class="calc-group"><label class="calc-label">MONTHLY INVESTMENT</label><span class="calc-value" id="invVal">₹5,000</span><input type="range" min="500" max="50000" step="500" value="5000" id="invRange" oninput="updateCalc()"/></div>
+        <div class="calc-group"><label class="calc-label">TIME HORIZON</label><span class="calc-value" id="yrsVal">10 YEARS</span><input type="range" min="1" max="30" step="1" value="10" id="yrsRange" oninput="updateCalc()"/></div>
+        <div class="calc-group"><label class="calc-label">EXPECTED RETURN</label><span class="calc-value" id="retVal">12.0%</span><input type="range" min="6" max="20" step="0.5" value="12" id="retRange" oninput="updateCalc()"/></div>
+      </div>
+      <div class="calc-result">
+        <p class="calc-label" style="color:rgba(255,255,255,0.5)">PROJECTED WEALTH</p>
+        <div class="calc-row"><div class="calc-row-label">TOTAL INVESTED</div><div class="calc-row-value" id="rInv">₹6,00,000</div></div>
+        <div class="calc-row"><div class="calc-row-label">ESTIMATED RETURNS</div><div class="calc-row-value" id="rRet">₹5,61,695</div></div>
+        <div class="calc-row"><div class="calc-row-label">FUTURE VALUE</div><div class="calc-row-value lg" id="rFV">₹11,61,695</div></div>
+        <div class="calc-row"><div class="calc-row-label">NET HALAL WEALTH</div><div class="calc-row-value lg accent" id="rNet">₹11,32,653</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WATCHLIST (collapsible) -->
 <section class="section" id="watchlist">
   <div class="section-inner">
-    <div style="text-align:center;margin-bottom:32px">
-      <p class="eyebrow">WATCHLIST</p>
-      <h2 class="headline" style="font-size:clamp(28px,5vw,42px)">TRACK <span class="headline-accent">HALAL</span> STOCKS.</h2>
+    <h2 class="headline" style="font-size:clamp(28px,5vw,42px);margin-bottom:24px">HALAL <span class="headline-accent">WATCHLIST.</span></h2>
+    <div style="display:flex;justify-content:center;margin-bottom:20px">
+      <button class="btn btn-outline" id="toggleWatchlistBtn" onclick="toggleWatchlist()" style="gap:8px"><span id="toggleIcon">▾</span> <span id="toggleText">HIDE TABLE</span></button>
     </div>
-    <div class="card" style="max-width:480px;margin:0 auto;">
+    <div id="watchlistTableWrapper">
+      <div class="table-wrap" id="fullWatchlistTable"></div>
+      <p style="text-align:center;font-size:12px;color:var(--text-secondary);margin-top:8px">DATA FOR EDUCATION. VERIFY ON SCREENER.IN</p>
+    </div>
+    <!-- Also the mini watchlist from mockup -->
+    <div class="card" style="max-width:480px;margin:32px auto 0">
       <div class="card-header"><div class="card-title">MY WATCHLIST</div><a href="#" class="card-subtitle">VIEW ALL →</a></div>
       <div class="watchlist-item">
         <div class="watchlist-icon">📊</div>
         <div class="watchlist-name">ITC Limited</div>
-        <div class="percentage-bar" style="flex:1;margin:0 12px;"><div class="percentage-fill" style="width:92%"></div></div>
+        <div class="percentage-bar" style="flex:1;margin:0 12px"><div class="percentage-fill" style="width:92%"></div></div>
         <div class="watchlist-percent">92%</div>
       </div>
       <div class="watchlist-item">
         <div class="watchlist-icon">📊</div>
         <div class="watchlist-name">Tata Consultancy</div>
-        <div class="percentage-bar" style="flex:1;margin:0 12px;"><div class="percentage-fill" style="width:94%"></div></div>
+        <div class="percentage-bar" style="flex:1;margin:0 12px"><div class="percentage-fill" style="width:94%"></div></div>
         <div class="watchlist-percent">94%</div>
       </div>
       <div class="watchlist-item">
         <div class="watchlist-icon">📊</div>
         <div class="watchlist-name">Larsen & Toubro</div>
-        <div class="percentage-bar" style="flex:1;margin:0 12px;"><div class="percentage-fill" style="width:91%"></div></div>
+        <div class="percentage-bar" style="flex:1;margin:0 12px"><div class="percentage-fill" style="width:91%"></div></div>
         <div class="watchlist-percent">91%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="section" id="learn" style="background:#F5F5F7">
+  <div class="section-inner"><div class="flashcard-wrap">
+    <h2 class="headline" style="font-size:clamp(28px,5vw,42px);margin-bottom:24px">20 ESSENTIAL <span class="headline-accent">CONCEPTS.</span></h2>
+    <p id="fcCounter" style="font-size:13px;font-weight:500;color:var(--text-secondary);text-align:center;margin-bottom:16px">QUESTION 1 OF 20</p>
+    <div class="flashcard" id="flashcard" onclick="flipCard()"><div class="flashcard-inner"><div class="flashcard-face flashcard-front"><div class="f-tag">TAP TO REVEAL</div><div class="f-q" id="fcQ"></div></div><div class="flashcard-face flashcard-back"><div class="f-a" id="fcA"></div></div></div></div>
+    <div class="flashcard-nav"><button onclick="prevCard()">← PREV</button><button onclick="nextCard()">NEXT →</button></div>
+    <div class="flashcard-dots" id="cardDots"></div>
+  </div></div>
+</section>
+
+<!-- WIZARD -->
+<section class="section" id="wizard">
+  <div class="section-inner" style="text-align:center">
+    <h2 class="headline" style="font-size:clamp(28px,5vw,42px);margin-bottom:24px">TEST A STOCK <span class="headline-accent">YOURSELF.</span></h2>
+    <div class="wizard-wrap">
+      <div class="wizard-card" id="wizardCard">
+        <div class="wizard-step active" id="step1">
+          <p class="card-title">STEP 1: INTEREST INCOME</p>
+          <input type="number" class="wizard-input" id="interestInput" placeholder="e.g. 1.5" step="0.1"/>
+          <div class="wizard-feedback" id="interestFeedback"></div>
+          <button class="btn btn-primary" style="margin-top:16px" onclick="nextWizardStep()">NEXT →</button>
+        </div>
+        <div class="wizard-step" id="step2">
+          <p class="card-title">STEP 2: DEBT RATIO</p>
+          <input type="number" class="wizard-input" id="debtInput" placeholder="e.g. 25" step="0.1"/>
+          <div class="wizard-feedback" id="debtFeedback"></div>
+          <button class="btn btn-primary" style="margin-top:16px" onclick="nextWizardStep()">NEXT →</button>
+        </div>
+        <div class="wizard-step" id="step3">
+          <p class="card-title">STEP 3: ILLIQUID ASSETS</p>
+          <input type="number" class="wizard-input" id="liquidInput" placeholder="e.g. 45" step="0.1"/>
+          <div class="wizard-feedback" id="liquidFeedback"></div>
+          <button class="btn btn-primary" style="margin-top:16px" onclick="showWizardResult()">SHOW VERDICT</button>
+        </div>
+        <div class="wizard-result" id="wizardResult"></div>
+        <button id="resetWizardBtn" style="display:none;margin-top:16px" class="btn btn-outline" onclick="resetWizard()">START OVER</button>
       </div>
     </div>
   </div>
@@ -267,65 +441,115 @@ ul{list-style:none}
 <!-- COMMUNITY HIGHLIGHTS -->
 <section class="section" id="community" style="background:#F5F5F7">
   <div class="section-inner">
-    <div style="text-align:center;margin-bottom:32px">
-      <p class="eyebrow">COMMUNITY</p>
-      <h2 class="headline" style="font-size:clamp(28px,5vw,42px)">LEARN & <span class="headline-accent">DISCUSS.</span></h2>
+    <h2 class="headline" style="font-size:clamp(28px,5vw,42px);margin-bottom:24px">COMMUNITY <span class="headline-accent">HIGHLIGHTS.</span></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:600px;margin:0 auto">
+      <div class="card" style="text-align:center"><div style="font-size:32px;margin-bottom:8px">❓</div><p style="font-weight:600">Is this stock suitable?</p><p style="font-size:13px;color:var(--text-secondary)">Community Q&A</p></div>
+      <div class="card" style="text-align:center"><div style="font-size:32px;margin-bottom:8px">💧</div><p style="font-weight:600">Purification: When necessary?</p><p style="font-size:13px;color:var(--text-secondary)">Expert insights</p></div>
+      <div class="card" style="text-align:center"><div style="font-size:32px;margin-bottom:8px">💰</div><p style="font-weight:600">Zakat on Shares</p><p style="font-size:13px;color:var(--text-secondary)">Detailed guide</p></div>
+      <div class="card" style="text-align:center"><div style="font-size:32px;margin-bottom:8px">📈</div><p style="font-weight:600">Halal Portfolio Building</p><p style="font-size:13px;color:var(--text-secondary)">Best practices</p></div>
     </div>
-    <div class="card-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:480px;margin:0 auto;">
-      <div class="card" style="text-align:center;"><div style="font-size:32px;margin-bottom:8px;">❓</div><p style="font-weight:600;margin-bottom:4px;">Q&A: Is this stock suitable?</p><p style="font-size:13px;color:var(--text-secondary);">Ask the community</p></div>
-      <div class="card" style="text-align:center;"><div style="font-size:32px;margin-bottom:8px;">💧</div><p style="font-weight:600;margin-bottom:4px;">Purification: When is it necessary?</p><p style="font-size:13px;color:var(--text-secondary);">Expert insights</p></div>
-      <div class="card" style="text-align:center;"><div style="font-size:32px;margin-bottom:8px;">💰</div><p style="font-weight:600;margin-bottom:4px;">Zakat on Shares – What are the rules?</p><p style="font-size:13px;color:var(--text-secondary);">Detailed guide</p></div>
-      <div class="card" style="text-align:center;"><div style="font-size:32px;margin-bottom:8px;">📈</div><p style="font-weight:600;margin-bottom:4px;">Building a Halal Portfolio</p><p style="font-size:13px;color:var(--text-secondary);">Best practices</p></div>
-    </div>
-    <div style="text-align:center;margin-top:24px;"><a href="#" class="btn btn-outline">VIEW ALL DISCUSSIONS</a></div>
   </div>
 </section>
 
 <!-- DISCLAIMER -->
-<section style="padding:48px 0;text-align:center;">
-  <p style="font-size:13px;color:var(--text-secondary);max-width:480px;margin:0 auto;">ENVESTMENT is purely an educational platform. We do not provide financial advice or fatwas. Always consult a qualified scholar.</p>
-  <p style="font-size:12px;color:var(--text-secondary);margin-top:8px;">Proudly made in India.</p>
+<section style="padding:48px 0;text-align:center;background:var(--bg-body)">
+  <p style="font-size:13px;color:var(--text-secondary);max-width:480px;margin:0 auto">ENVESTMENT is an educational platform. We do not provide financial advice or fatwas. Always consult a qualified scholar.</p>
+  <p style="font-size:12px;color:var(--text-secondary);margin-top:8px">Proudly made in India.</p>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
-    <div>
-      <h4 style="font-size:18px;font-weight:700;color:#FFF;margin-bottom:6px;">ENVESTMENT</h4>
-      <p style="font-size:12px;color:rgba(255,255,255,0.5);">Your journey to halal wealth starts here.</p>
-    </div>
-    <div><h6 style="font-size:10px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Quick Links</h6><a href="#" style="color:rgba(255,255,255,0.5);display:block;">Screener</a><a href="#" style="color:rgba(255,255,255,0.5);display:block;">Calculators</a></div>
-    <div><h6 style="font-size:10px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Legal</h6><a href="#" style="color:rgba(255,255,255,0.5);display:block;">Disclaimer</a></div>
+    <div><h4 style="font-size:18px;font-weight:700;color:#FFF;margin-bottom:6px">ENVESTMENT</h4><p style="font-size:12px;color:rgba(255,255,255,0.5)">Your journey to halal wealth starts here.</p></div>
+    <div><h6 style="font-size:10px;text-transform:uppercase;color:rgba(255,255,255,0.4)">Quick Links</h6><a href="#" style="color:rgba(255,255,255,0.5);display:block">Screener</a><a href="#" style="color:rgba(255,255,255,0.5);display:block">Calculators</a></div>
+    <div><h6 style="font-size:10px;text-transform:uppercase;color:rgba(255,255,255,0.4)">Legal</h6><a href="#" style="color:rgba(255,255,255,0.5);display:block">Disclaimer</a></div>
   </div>
   <div class="footer-bottom"><span>© ENVESTMENT · AAOIFI Aligned</span><span>Verify all data independently.</span></div>
 </footer>
 
+<!-- CHATBOT -->
+<button class="chatbot-toggle" onclick="document.getElementById('chatbotWindow').classList.toggle('open')">💬</button>
+<div class="chatbot-window" id="chatbotWindow">
+  <div class="chatbot-header"><span>ENVESTMENT ASSISTANT</span><button style="background:none;border:none;color:#FFF;font-size:14px;cursor:pointer" onclick="document.getElementById('chatbotWindow').classList.remove('open')">✕</button></div>
+  <div class="chatbot-body" id="chatbotBody"><div class="chatbot-msg bot">Assalamu alaikum! Ask me about halal investing, screening, purification, Zakat, or our tools. <strong>I am not a scholar — consult one for religious rulings.</strong></div></div>
+  <div class="chatbot-input-row"><input type="text" id="chatbotInput" placeholder="Type your question..." onkeypress="if(event.key==='Enter')sendChat()"/><button onclick="sendChat()">SEND</button></div>
+</div>
+
 <script>
-// ── STOCK DATABASE (partial) ──
-const stocks={
-  INFY:{name:'Infosys Limited',interest:0.4,debt:2.1,liquid:78,status:'halal',compliant:96},
-  TCS:{name:'Tata Consultancy Services',interest:0.3,debt:1.8,liquid:81,status:'halal',compliant:94},
-  RELIANCE:{name:'Reliance Industries',interest:2.8,debt:28.4,liquid:41,status:'caution',compliant:72},
-  ITC:{name:'ITC Limited',interest:4.1,debt:1.2,liquid:55,status:'haram',compliant:55},
+// ── 50 STOCK DATABASE ──
+const stocksDatabase={
+TCS:{name:'TATA CONSULTANCY',sector:'IT',interest:0.3,debt:1.8,liquid:81,status:'halal',compliant:94},
+INFY:{name:'INFOSYS',sector:'IT',interest:0.4,debt:2.1,liquid:78,status:'halal',compliant:96},
+WIPRO:{name:'WIPRO',sector:'IT',interest:0.5,debt:3.2,liquid:72,status:'halal',compliant:92},
+HCLTECH:{name:'HCL TECH',sector:'IT',interest:0.6,debt:2.5,liquid:75,status:'halal',compliant:93},
+TECHM:{name:'TECH MAHINDRA',sector:'IT',interest:0.8,debt:4.1,liquid:68,status:'halal',compliant:90},
+ASIANPAINT:{name:'ASIAN PAINTS',sector:'Paints',interest:0.2,debt:1.2,liquid:79,status:'halal',compliant:97},
+PIDILITIND:{name:'PIDILITE',sector:'Chemicals',interest:0.3,debt:1.8,liquid:76,status:'halal',compliant:95},
+DRREDDY:{name:"DR. REDDY'S",sector:'Pharma',interest:0.4,debt:8.5,liquid:64,status:'halal',compliant:88},
+DIVISLAB:{name:"DIVI'S LAB",sector:'Pharma',interest:0.2,debt:0.5,liquid:80,status:'halal',compliant:98},
+SUNPHARMA:{name:'SUN PHARMA',sector:'Pharma',interest:0.6,debt:9.2,liquid:61,status:'halal',compliant:86},
+CIPLA:{name:'CIPLA',sector:'Pharma',interest:0.5,debt:7.1,liquid:66,status:'halal',compliant:87},
+NESTLEIND:{name:'NESTLÉ',sector:'FMCG',interest:0.4,debt:6.3,liquid:58,status:'caution',compliant:72},
+TATACONSUM:{name:'TATA CONSUMER',sector:'FMCG',interest:0.3,debt:3.2,liquid:69,status:'halal',compliant:91},
+MARUTI:{name:'MARUTI SUZUKI',sector:'Auto',interest:0.7,debt:3.8,liquid:62,status:'caution',compliant:74},
+RELIANCE:{name:'RELIANCE',sector:'Diversified',interest:2.8,debt:28.4,liquid:41,status:'caution',compliant:56},
+TATAMOTORS:{name:'TATA MOTORS',sector:'Auto',interest:3.2,debt:62.1,liquid:29,status:'haram',compliant:32},
+HDFCBANK:{name:'HDFC BANK',sector:'Banking',interest:95.2,debt:89.1,liquid:8,status:'haram',compliant:5},
+ITC:{name:'ITC',sector:'FMCG/Tobacco',interest:4.1,debt:1.2,liquid:55,status:'haram',compliant:44},
+TITAN:{name:'TITAN',sector:'Jewellery',interest:0.4,debt:5.2,liquid:61,status:'halal',compliant:85},
+BAJAJFINANCE:{name:'BAJAJ FINANCE',sector:'NBFC',interest:82.4,debt:76.3,liquid:12,status:'haram',compliant:10},
+SBIN:{name:'SBI',sector:'Banking',interest:88.9,debt:91.2,liquid:6,status:'haram',compliant:3},
+HINDUNILVR:{name:'HUL',sector:'FMCG',interest:0.3,debt:0.5,liquid:68,status:'halal',compliant:96},
+BRITANNIA:{name:'BRITANNIA',sector:'FMCG',interest:0.4,debt:9.2,liquid:56,status:'halal',compliant:82},
+DABUR:{name:'DABUR',sector:'FMCG',interest:0.3,debt:4.1,liquid:65,status:'halal',compliant:89},
+GODREJCP:{name:'GODREJ CONSUMER',sector:'FMCG',interest:0.5,debt:5.4,liquid:63,status:'halal',compliant:87},
+MARICO:{name:'MARICO',sector:'FMCG',interest:0.2,debt:1.8,liquid:73,status:'halal',compliant:94},
+SIEMENS:{name:'SIEMENS',sector:'Engineering',interest:0.5,debt:0.4,liquid:77,status:'halal',compliant:95},
+ABB:{name:'ABB INDIA',sector:'Engineering',interest:0.4,debt:0.3,liquid:79,status:'halal',compliant:96},
+HAVELLS:{name:'HAVELLS',sector:'Electrical',interest:0.6,debt:2.9,liquid:68,status:'halal',compliant:90},
+KOTAKBANK:{name:'KOTAK MAHINDRA',sector:'Banking',interest:93.5,debt:88.7,liquid:9,status:'haram',compliant:6},
+AXISBANK:{name:'AXIS BANK',sector:'Banking',interest:90.3,debt:86.4,liquid:7,status:'haram',compliant:4},
+ICICIBANK:{name:'ICICI BANK',sector:'Banking',interest:91.8,debt:87.2,liquid:8,status:'haram',compliant:5},
+BHARTIARTL:{name:'BHARTI AIRTEL',sector:'Telecom',interest:4.5,debt:38.2,liquid:42,status:'caution',compliant:61},
+LT:{name:'L&T',sector:'Construction',interest:2.1,debt:22.5,liquid:39,status:'caution',compliant:58},
+ULTRACEMCO:{name:'ULTRATECH',sector:'Cement',interest:1.9,debt:18.3,liquid:46,status:'halal',compliant:74},
+SHREECEM:{name:'SHREE CEMENT',sector:'Cement',interest:1.7,debt:14.1,liquid:49,status:'halal',compliant:78},
+HDFCLIFE:{name:'HDFC LIFE',sector:'Insurance',interest:8.2,debt:5.4,liquid:21,status:'haram',compliant:28},
+POWERGRID:{name:'POWER GRID',sector:'Power',interest:2.3,debt:28.9,liquid:58,status:'caution',compliant:59},
+NTPC:{name:'NTPC',sector:'Power',interest:3.1,debt:35.2,liquid:55,status:'haram',compliant:42},
+ONGC:{name:'ONGC',sector:'Oil & Gas',interest:2.8,debt:12.4,liquid:61,status:'halal',compliant:72},
+COALINDIA:{name:'COAL INDIA',sector:'Mining',interest:1.5,debt:0.9,liquid:63,status:'halal',compliant:88},
+ADANIPORTS:{name:'ADANI PORTS',sector:'Infra',interest:3.3,debt:41.8,liquid:52,status:'haram',compliant:38},
+ADANIENT:{name:'ADANI ENTERPRISES',sector:'Diversified',interest:3.9,debt:44.2,liquid:38,status:'haram',compliant:34},
+EICHERMOT:{name:'EICHER MOTORS',sector:'Auto',interest:0.4,debt:0.9,liquid:64,status:'halal',compliant:92},
+BAJFINANCE:{name:'BAJAJ FINANCE',sector:'NBFC',interest:82.1,debt:74.5,liquid:11,status:'haram',compliant:9},
+MINDTREE:{name:'MINDTREE',sector:'IT',interest:0.5,debt:2.4,liquid:74,status:'halal',compliant:91},
+LTI:{name:'L&T INFOTECH',sector:'IT',interest:0.4,debt:2.1,liquid:76,status:'halal',compliant:93},
+MPHASIS:{name:'MPHASIS',sector:'IT',interest:0.6,debt:3.3,liquid:71,status:'halal',compliant:89},
+BIOCON:{name:'BIOCON',sector:'Pharma',interest:0.7,debt:11.2,liquid:58,status:'halal',compliant:80},
 };
 
+// populate pills
+const pc=document.getElementById('pillContainer');
+Object.keys(stocksDatabase).slice(0,12).forEach(sym=>{
+  const s=document.createElement('span');s.className='pill';s.textContent=sym;
+  s.onclick=()=>{document.getElementById('stockInput').value=sym;runScreener();};
+  pc.appendChild(s);
+});
+
 function runScreener(){
-  const s=document.getElementById('stockInput').value.trim().toUpperCase();
-  const el=document.getElementById('screenerResult');
-  const d=stocks[s];
+  const sym=document.getElementById('stockInput').value.trim().toUpperCase();
+  const el=document.getElementById('screenerResult'),d=stocksDatabase[sym];
   if(!d){el.innerHTML='<div class="card" style="text-align:center">No data for that symbol.</div>';return}
   const statusColor=d.status==='halal'?'#2E7D32':d.status==='haram'?'#C62828':'#E65100';
   el.innerHTML=`
     <div class="card">
       <div class="card-header">
-        <div>
-          <div class="card-title">${d.name} (${s})</div>
-          <div class="card-subtitle">📌 Shariah Compliant</div>
-        </div>
+        <div><div class="card-title">${d.name} (${sym})</div><div class="card-subtitle">📌 Shariah Compliant</div></div>
         <div style="font-size:32px;font-weight:800;color:${statusColor}">${d.compliant}%</div>
       </div>
       <div class="percentage-bar"><div class="percentage-fill" style="width:${d.compliant}%"></div></div>
-      <div style="font-size:13px;font-weight:600;margin-bottom:12px;">Compliant</div>
+      <div style="font-size:13px;font-weight:600;margin-bottom:12px">Compliant</div>
       <div class="compliance-summary">
         <div class="summary-item checked">Business Activity</div>
         <div class="summary-item checked">Interest-bearing Debt</div>
@@ -336,14 +560,123 @@ function runScreener(){
     </div>
   `;
 }
-// Populate quick pills
-const pills=['INFY','TCS','RELIANCE','ITC'];
-const pc=document.getElementById('pillContainer');
-pills.forEach(p=>{const s=document.createElement('span');s.className='pill';s.style.cssText='background:rgba(60,42,33,0.05);padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;margin:4px;';s.textContent=p;s.onclick=()=>{document.getElementById('stockInput').value=p;runScreener();};pc.appendChild(s);});
+document.getElementById('stockInput').addEventListener('keypress',e=>{if(e.key==='Enter')runScreener()});
+
+// Full watchlist table
+function buildFullWatchlist(){
+  let rows=Object.entries(stocksDatabase).map(([sym,d])=>{
+    const badge=d.status==='halal'?'<span class="badge badge-halal">✓ HALAL</span>':d.status==='haram'?'<span class="badge badge-haram">✗ HARAM</span>':'<span class="badge badge-caution">⚠ CAUTION</span>';
+    return `<tr><td><strong>${sym}</strong></td><td>${d.sector}</td><td>${d.interest}%</td><td>${d.debt}%</td><td>${d.compliant}%</td><td>${badge}</td></tr>`;
+  }).join('');
+  document.getElementById('fullWatchlistTable').innerHTML=`<table class="data-table"><thead><tr><th>SYMBOL</th><th>SECTOR</th><th>INTEREST</th><th>DEBT</th><th>COMPLIANCE</th><th>STATUS</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+buildFullWatchlist();
+function toggleWatchlist(){
+  const w=document.getElementById('watchlistTableWrapper');
+  const i=document.getElementById('toggleIcon');
+  const t=document.getElementById('toggleText');
+  if(w.style.display==='none'){w.style.display='block';i.textContent='▾';t.textContent='HIDE TABLE'}
+  else{w.style.display='none';i.textContent='▸';t.textContent='SHOW TABLE'}
+}
+
+// Growth calc
+function fmt(n){return'₹'+Math.round(n).toLocaleString('en-IN')}
+function updateCalc(){
+  const m=+document.getElementById('invRange').value,y=+document.getElementById('yrsRange').value,r=+document.getElementById('retRange').value/100;
+  document.getElementById('invVal').textContent=fmt(m);
+  document.getElementById('yrsVal').textContent=y+' YEAR'+(y>1?'S':'');
+  document.getElementById('retVal').textContent=(r*100).toFixed(1)+'%';
+  const n=y*12,mr=r/12;
+  const fv=m*((Math.pow(1+mr,n)-1)/mr)*(1+mr);
+  const inv=m*n,ret=fv-inv,z=fv*0.025,net=fv-z;
+  document.getElementById('rInv').textContent=fmt(inv);
+  document.getElementById('rRet').textContent=fmt(ret);
+  document.getElementById('rFV').textContent=fmt(fv);
+  document.getElementById('rNet').textContent=fmt(net);
+}
+updateCalc();
+
+// Flashcards
+const cards=[{q:'IS GOLD HALAL?',a:'Physical gold, coins, bars, and gold ETFs are halal. Avoid SGB (2.5% interest).'},{q:'WHAT IS RIBA?',a:'Riba means interest — any guaranteed return on a loan. Prohibited in Quran (2:275).'},{q:'DEBT RATIO LIMIT?',a:'<33% of total assets or market cap.'},{q:'PURIFICATION?',a:'If impure income <5%, donate that % of dividends to charity (not Zakat).'},{q:'HALAL MUTUAL FUNDS?',a:'Yes: Tata Ethical, Taurus Ethical. SIP from ₹500.'},{q:'ZAKAT ON INVESTMENTS?',a:'2.5% on wealth held one lunar year above Nisab.'},{q:'ARE REITS HALAL?',a:'If tenants are halal, debt <33%, interest <5%.'},{q:'WHAT ARE SUKUK?',a:'Islamic bonds — profit-sharing, no interest.'},{q:'CAN I USE GROWW?',a:'Yes, just buy halal products.'},{q:'WHAT IS GHARAR?',a:'Excessive uncertainty — options, futures are haram.'},{q:'IS DAY TRADING HALAL?',a:'Controversial; long-term investing preferred.'},{q:'BANK ACCOUNTS?',a:'Avoid interest; donate if forced.'},{q:'SGB HALAL?',a:'No. Sovereign Gold Bonds pay 2.5% interest — haram.'},{q:'TATA ETHICAL FUND?',a:"India's largest Shariah-compliant mutual fund. Screened quarterly."},{q:'HOW TO SCREEN A STOCK?',a:'4-step AAOIFI test: business activity, interest <5%, debt <33%, illiquid >33%.'},{q:'WHAT IS AAOIFI?',a:'Accounting and Auditing Organization for Islamic Financial Institutions.'},{q:'CAN I INVEST IN RELIANCE?',a:'Caution required. Diversified business, debt near limits. Verify and consult a scholar.'},{q:'ARE DIVIDENDS HALAL?',a:'Yes, if the stock passes screening. Purify if minor impure income.'},{q:'WHAT IS NISAB?',a:'Minimum wealth for Zakat — value of 85g gold or 595g silver.'},{q:'IS CRYPTO HALAL?',a:'Scholarly debate. Some permit Bitcoin as digital asset. Consult a scholar.'}];
+let curCard=0,flipped=false;
+function buildDots(){document.getElementById('cardDots').innerHTML=cards.map((_,i)=>`<div class="f-dot ${i===curCard?'active':''}"></div>`).join('')}
+function setCard(){
+  const fc=document.getElementById('flashcard');fc.classList.remove('flipped');flipped=false;
+  setTimeout(()=>{
+    document.getElementById('fcQ').textContent=cards[curCard].q;
+    document.getElementById('fcA').textContent=cards[curCard].a;
+    document.getElementById('fcCounter').textContent=`QUESTION ${curCard+1} OF ${cards.length}`;
+    buildDots();
+  },200);
+}
+function flipCard(){document.getElementById('flashcard').classList.toggle('flipped');flipped=!flipped}
+function nextCard(){curCard=(curCard+1)%cards.length;setCard()}
+function prevCard(){curCard=(curCard-1+cards.length)%cards.length;setCard()}
+setCard();
+
+// Wizard
+let wizardStep=1;
+function nextWizardStep(){
+  const interest=parseFloat(document.getElementById('interestInput').value);
+  const debt=parseFloat(document.getElementById('debtInput').value);
+  if(wizardStep===1){
+    if(isNaN(interest)||interest<0){alert('Enter valid interest %');return}
+    const pass=interest<5;
+    document.getElementById('interestFeedback').textContent=pass?'✓ Interest <5% (PASS)':'✗ Interest >5% (FAIL)';
+    document.getElementById('interestFeedback').className='wizard-feedback '+(pass?'pass':'fail');
+    document.getElementById('step1').classList.remove('active');document.getElementById('step2').classList.add('active');
+    wizardStep=2;
+  }else if(wizardStep===2){
+    if(isNaN(debt)||debt<0){alert('Enter valid debt %');return}
+    const pass=debt<33;
+    document.getElementById('debtFeedback').textContent=pass?'✓ Debt <33% (PASS)':'✗ Debt >33% (FAIL)';
+    document.getElementById('debtFeedback').className='wizard-feedback '+(pass?'pass':'fail');
+    document.getElementById('step2').classList.remove('active');document.getElementById('step3').classList.add('active');
+    wizardStep=3;
+  }
+}
+function showWizardResult(){
+  const liquid=parseFloat(document.getElementById('liquidInput').value);
+  if(isNaN(liquid)||liquid<0){alert('Enter valid illiquid %');return}
+  const pass=liquid>33;
+  document.getElementById('liquidFeedback').textContent=pass?'✓ Illiquid >33% (PASS)':'✗ Illiquid <33% (FAIL)';
+  document.getElementById('liquidFeedback').className='wizard-feedback '+(pass?'pass':'fail');
+  document.getElementById('step3').classList.remove('active');
+  const iP=parseFloat(document.getElementById('interestInput').value)<5;
+  const dP=parseFloat(document.getElementById('debtInput').value)<33;
+  const allPass=iP&&dP&&pass;
+  const rd=document.getElementById('wizardResult');rd.style.display='block';
+  if(allPass){rd.className='wizard-result halal';rd.innerHTML='<p class="card-title" style="color:#2E7D32">✓ LIKELY HALAL</p>'}
+  else if(!iP&&!dP&&!pass){rd.className='wizard-result haram';rd.innerHTML='<p class="card-title" style="color:#C62828">✗ LIKELY HARAM</p>'}
+  else{rd.className='wizard-result caution';rd.innerHTML='<p class="card-title" style="color:#E65100">⚠ CAUTION</p>'}
+  document.getElementById('resetWizardBtn').style.display='block';
+}
+function resetWizard(){
+  document.getElementById('step1').classList.add('active');document.getElementById('step2').classList.remove('active');document.getElementById('step3').classList.remove('active');
+  document.getElementById('interestInput').value='';document.getElementById('debtInput').value='';document.getElementById('liquidInput').value='';
+  document.getElementById('interestFeedback').textContent='';document.getElementById('debtFeedback').textContent='';document.getElementById('liquidFeedback').textContent='';
+  document.getElementById('wizardResult').style.display='none';document.getElementById('resetWizardBtn').style.display='none';
+  wizardStep=1;
+}
 
 // Mobile menu
 function toggleMobile(){document.getElementById('mobileMenu').classList.toggle('open');document.getElementById('hamburgerBtn').classList.toggle('open')}
 function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');document.getElementById('hamburgerBtn').classList.remove('open')}
+
+// Chatbot
+function sendChat(){
+  const input=document.getElementById('chatbotInput');const msg=input.value.trim();if(!msg)return;
+  appendMessage('user',msg);input.value='';
+  const lower=msg.toLowerCase();let reply='';
+  if(lower.includes('what is this')||lower.includes('purpose')) reply='<strong>ENVESTMENT</strong> is an educational platform for Shariah‑compliant investing.';
+  else if(lower.includes('hello')||lower.includes('salaam')) reply='Wa alaikum assalam! Ask me about halal investing.';
+  else reply='I can help with screening, purification, Zakat, and more.';
+  setTimeout(()=>appendMessage('bot',reply),400);
+}
+function appendMessage(sender,text){
+  const body=document.getElementById('chatbotBody');const div=document.createElement('div');
+  div.className=`chatbot-msg ${sender}`;div.innerHTML=text;body.appendChild(div);body.scrollTop=body.scrollHeight;
+}
 </script>
 </body>
 </html>
