@@ -35,7 +35,7 @@ body{
   background:var(--bg-body);color:var(--text-primary);line-height:1.47059;font-weight:400;
   letter-spacing:-0.022em;overflow-x:hidden;position:relative;
   overscroll-behavior:none;touch-action:pan-y pinch-zoom;
-  padding-bottom: calc(var(--bottom-nav-height) + 20px); /* space for bottom nav */
+  padding-bottom: calc(var(--bottom-nav-height) + 20px);
 }
 html, body{width:100%;max-width:100vw;overflow-x:hidden;}
 
@@ -151,11 +151,12 @@ ul{list-style:none}
 .summary-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-primary);}
 .summary-item.checked::before{content:'✓';color:#2E7D32;font-weight:700;}
 
-/* FUNDAMENTALS PANEL */
+/* FUNDAMENTALS + WHY HALAL */
 .fundamentals-panel{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);}
 .fundamentals-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .fundamental-item{font-size:13px;display:flex;justify-content:space-between;}
 .fundamental-item span:last-child{font-weight:600}
+.halal-explanation{font-size:13px;color:var(--text-secondary);line-height:1.6;margin-top:12px;background:rgba(190,183,164,0.06);padding:12px;border-radius:8px;}
 
 /* CALCULATOR */
 .calc-input{
@@ -233,6 +234,9 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 /* MISC */
 .pill{background:rgba(190,183,164,0.2);padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;transition:0.2s;display:inline-block;margin:4px;}
 .pill:hover{background:rgba(190,183,164,0.4);}
+
+/* Helpful info instead of buttons */
+.helpful-note{font-size:13px;color:var(--text-secondary);margin-top:14px;padding:10px;background:rgba(190,183,164,0.08);border-radius:8px;text-align:center;}
 </style>
 </head>
 <body>
@@ -277,7 +281,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
         <div class="carousel-slide">
           <div class="carousel-icon">🔍</div>
           <div class="carousel-title">STOCK SCREENING</div>
-          <div class="carousel-desc">Instantly check Shariah compliance of 50+ Indian stocks.</div>
+          <div class="carousel-desc">Instantly check Shariah compliance of 65+ Indian stocks.</div>
         </div>
         <div class="carousel-slide">
           <div class="carousel-icon">💧</div>
@@ -367,7 +371,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   </div>
 </section>
 
-<!-- CALCULATORS (fully responsive) -->
+<!-- CALCULATORS (live updating, no redundant buttons) -->
 <section class="section" id="calculator">
   <div class="section-inner">
     <h2 class="headline" style="font-size:clamp(28px,5vw,42px);margin-bottom:24px"><span class="headline-accent">CALCULATORS.</span></h2>
@@ -380,7 +384,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
         <label class="calc-label">Other Non‑Permissible (₹)</label>
         <input type="number" id="purOther" class="calc-input" value="895" oninput="calcPurification()"/>
         <div class="calc-row"><span class="calc-label">Total Purifiable</span><span class="calc-value" id="purTotal">₹2,345</span></div>
-        <button class="btn btn-outline" style="margin-top:16px;width:100%" onclick="calcPurification()">CALCULATE PURIFICATION</button>
+        <div class="helpful-note">💡 Donate this amount to charity (not as Zakat). Purify your earnings.</div>
       </div>
       <!-- Zakat -->
       <div class="card">
@@ -393,7 +397,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
           <option value="no">No</option>
         </select>
         <div class="calc-row"><span class="calc-label">Total Zakat Payable</span><span class="calc-value" id="zakatTotal">₹18,765</span></div>
-        <button class="btn btn-outline" style="margin-top:16px;width:100%" onclick="calcZakat()">CALCULATE ZAKAT</button>
+        <div class="helpful-note">💡 Nisab is approx. ₹5,00,000 (85g gold). Pay Zakat with a pure intention.</div>
       </div>
     </div>
     <!-- Growth Calculator -->
@@ -534,7 +538,6 @@ const stocksDatabase = {
   ADANIENT:{name:'ADANI ENTERPRISES',sector:'Diversified',interest:3.9,debt:44.2,liquid:38,status:'haram',compliant:34,pe:68.2,eps:42,roe:11,marketCap:'₹3,50,000 Cr'},
   EICHERMOT:{name:'EICHER MOTORS',sector:'Auto',interest:0.4,debt:0.9,liquid:64,status:'halal',compliant:92,pe:27.5,eps:92,roe:22,marketCap:'₹1,00,000 Cr'},
   BAJFINANCE:{name:'BAJAJ FINANCE',sector:'NBFC',interest:82.1,debt:74.5,liquid:11,status:'haram',compliant:9,pe:32.4,eps:198,roe:19,marketCap:'₹4,20,000 Cr'},
-  // Additional stocks
   MINDTREE:{name:'MINDTREE',sector:'IT',interest:0.5,debt:2.4,liquid:74,status:'halal',compliant:91,pe:30.2,eps:42,roe:28,marketCap:'₹60,000 Cr'},
   LTI:{name:'L&T INFOTECH',sector:'IT',interest:0.4,debt:2.1,liquid:76,status:'halal',compliant:93,pe:35.1,eps:58,roe:31,marketCap:'₹70,000 Cr'},
   MPHASIS:{name:'MPHASIS',sector:'IT',interest:0.6,debt:3.3,liquid:71,status:'halal',compliant:89,pe:26.8,eps:52,roe:25,marketCap:'₹55,000 Cr'},
@@ -554,6 +557,7 @@ function runScreener(){
   const el=document.getElementById('screenerResult'),d=stocksDatabase[sym];
   if(!d){el.innerHTML='<div class="card" style="text-align:center">No data for that symbol. Try TCS, INFY, or RELIANCE.</div>';return}
   const statusColor=d.status==='halal'?'#2E7D32':d.status==='haram'?'#C62828':'#E65100';
+  const explanation = generateHalalExplanation(d);
   el.innerHTML=`
     <div class="card">
       <div class="card-header">
@@ -577,12 +581,25 @@ function runScreener(){
           <div class="fundamental-item"><span>ROE</span><span>${d.roe}%</span></div>
           <div class="fundamental-item"><span>Market Cap</span><span>${d.marketCap}</span></div>
         </div>
-        <p style="font-size:11px;color:var(--text-secondary);margin-top:12px">Fundamentals are for educational purposes only. Always verify current data.</p>
+        <div class="halal-explanation">${explanation}</div>
       </div>
     </div>
   `;
 }
 document.getElementById('stockInput').addEventListener('keypress',e=>{if(e.key==='Enter')runScreener()});
+
+function generateHalalExplanation(d){
+  if(d.status==='haram') return 'This stock fails one or more AAOIFI screens (e.g., excessive interest income, high debt, or impermissible business activity). It is generally considered non‑compliant by Shariah standards.';
+  if(d.status==='caution') return 'This stock partially passes AAOIFI screens, but some metrics (like debt ratio or interest income) are close to or slightly above the permissible limits. Many scholars advise caution and recommend purification. Always verify current data and consult a scholar.';
+  // halal explanation
+  const business = d.sector.includes('Banking') || d.sector.includes('NBFC') || d.sector.includes('Insurance') ? 
+    'Business activity is permissible (non‑financial, not involved in prohibited sectors).' : 
+    'Business activity is permissible (not involved in alcohol, gambling, pork, or conventional finance).';
+  const interest = d.interest < 5 ? `Interest income (${d.interest}%) is well below the 5% threshold.` : `Interest income is above 5%, but may still be acceptable if purified.`;
+  const debt = d.debt < 33 ? `Total debt (${d.debt}%) is below the 33% limit, indicating low reliance on interest‑bearing debt.` : `Debt (${d.debt}%) is above 33%, which requires caution.`;
+  const liquid = d.liquid > 33 ? `Illiquid assets (${d.liquid}%) exceed 33%, meaning the company's value is not primarily cash‑based.` : `Illiquid assets are below 33%, which could be a concern for some scholars.`;
+  return `<strong>Why this is considered Halal:</strong><br>✓ ${business}<br>✓ ${interest}<br>✓ ${debt}<br>✓ ${liquid}<br><br>This stock passes the 4‑step AAOIFI screening method. However, always verify the latest financial data and consult a qualified Islamic scholar before making any investment decision.`;
+}
 
 function toggleFundamentals(btn){
   const panel = btn.nextElementSibling;
@@ -619,7 +636,7 @@ function toggleWatchlist(){
   }
 }
 
-// ── CALCULATOR FUNCTIONS ──
+// ── CALCULATOR FUNCTIONS (live update, no buttons) ──
 function calcPurification(){
   const interest = parseFloat(document.getElementById('purInterest').value) || 0;
   const other = parseFloat(document.getElementById('purOther').value) || 0;
